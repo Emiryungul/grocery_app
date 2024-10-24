@@ -17,6 +17,7 @@ class HomeScreen extends StatelessWidget {
     AppImages.applePNG,
     AppImages.broccoliPNG,
     AppImages.cheesePNG,
+
     AppImages.meatPNG,
 
   ];
