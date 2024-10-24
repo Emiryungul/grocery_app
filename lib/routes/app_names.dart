@@ -1,4 +1,4 @@
 abstract class AppRoutes {
   static const home = '/';
-  static const yanSayfa = '/yansayfa';
+  static const productsScreen = '/productsscreen';
 }

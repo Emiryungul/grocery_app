@@ -1,9 +1,12 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_state_manager/src/rx_flutter/rx_obx_widget.dart';
 import 'package:get/get_state_manager/src/simple/get_state.dart';
 import 'package:sizer/sizer.dart';
 import '../../controllers/categories&products_controller.dart';
+import '../../routes/app_names.dart';
 import '../../utils/app_colors.dart';
 import '../../utils/app_images.dart';
 
@@ -166,18 +169,25 @@ class HomeScreen extends StatelessWidget {
                               children: [
                                 Padding(
                                   padding: const EdgeInsets.all(8.0),
-                                  child: Container(
-                                    width: 75,
-                                    height: 75,
-                                    decoration: BoxDecoration(
-                                        color: AppColors.lightGreyColor,
-                                        shape: BoxShape.circle),
-                                    child: Center(
-                                      child: Image.network(
-                                        "${product?.imageUrl}",
-                                        fit: BoxFit.contain,
-                                        width: 50,
-                                        height: 50,
+                                  child: InkWell(
+                                    onTap: () async {
+                                      controller
+                                          .fetchProductsByCategory(product?.id ?? 0);
+                                      Get.toNamed(AppRoutes.productsScreen);
+                                    },
+                                    child: Container(
+                                      width: 75,
+                                      height: 75,
+                                      decoration: BoxDecoration(
+                                          color: AppColors.whiteAppColor,
+                                          shape: BoxShape.circle),
+                                      child: Center(
+                                        child: Image.network(
+                                          "${product?.imageUrl}",
+                                          fit: BoxFit.contain,
+                                          width: 50,
+                                          height: 50,
+                                        ),
                                       ),
                                     ),
                                   ),
@@ -199,7 +209,7 @@ class HomeScreen extends StatelessWidget {
                 ),
                 SliverToBoxAdapter(
                   child: Padding(
-                    padding: const EdgeInsets.only(left: 12, right: 10),
+                    padding: const EdgeInsets.only(left: 12, right: 10,bottom: 10),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
@@ -222,17 +232,17 @@ class HomeScreen extends StatelessWidget {
                       crossAxisCount: 2, // 2 columns
                       mainAxisSpacing: 2.0,
                       crossAxisSpacing: 0.0,
-                      childAspectRatio: (10.w / 5.7.h)
+                      childAspectRatio: (9.5.w / 5.7.h)
                       ),
                   delegate: SliverChildBuilderDelegate(
                     (BuildContext context, int index) {
                       final product = controller.Products?.data?[index];
                       return Padding(
                           padding: const EdgeInsets.only(
-                              left: 10, right: 10, bottom: 10),
+                              left: 5, right: 5, bottom: 10),
                           child: Container(
                               decoration: BoxDecoration(
-                                color: AppColors.lightGreyColor,
+                                color: AppColors.whiteAppColor,
                                 borderRadius: BorderRadius.circular(12),
                               ),
                               child: Column(
@@ -242,10 +252,11 @@ class HomeScreen extends StatelessWidget {
                                     height: 2.h,
                                   ),
                                   Center(
-                                      child: Image.asset(
-                                    AppImages.grocery1PNG,
-                                    width: 100,
-                                    height: 100,
+                                      child: Image.network(
+                                    "${product?.imageUrl}",
+                                        fit: BoxFit.cover,
+                                        width: 100,
+                                        height: 100,
                                   )),
                                   Padding(
                                     padding: const EdgeInsets.only(
@@ -260,7 +271,7 @@ class HomeScreen extends StatelessWidget {
                                   Padding(
                                     padding: const EdgeInsets.only(left: 15),
                                     child: Text(
-                                      "info of product",
+                                      "${product?.description}",
                                       style: TextStyle(
                                           fontWeight: FontWeight.bold,
                                           fontSize: 16,

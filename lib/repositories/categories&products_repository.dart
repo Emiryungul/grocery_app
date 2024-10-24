@@ -21,4 +21,10 @@ class CategoriesRepository {
     print(response.body);
     return response;
   }
+  Future<http.Response> fetchProductsByCategory(int id) async {
+    final response = await apiService.getRequest('/categories/$id/products');
+    debugPrint(response.body);
+    print(response.body);
+    return response;
+  }
 }
