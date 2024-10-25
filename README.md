@@ -1,4 +1,4 @@
-Here’s a detailed `README.md` template for your `grocery_app` in Flutter. You can further customize it based on your needs.
+
 
 ---
 
