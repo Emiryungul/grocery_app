@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_state_manager/src/rx_flutter/rx_obx_widget.dart';
 import 'package:get/get_state_manager/src/simple/get_state.dart';
+import 'package:grocery_app/ui/widgets/boxshadow_widget.dart';
 import 'package:sizer/sizer.dart';
 import '../../controllers/categories&products_controller.dart';
 import '../../routes/app_names.dart';
@@ -180,7 +181,9 @@ class HomeScreen extends StatelessWidget {
                                       height: 75,
                                       decoration: BoxDecoration(
                                           color: AppColors.whiteAppColor,
-                                          shape: BoxShape.circle),
+                                          shape: BoxShape.circle,
+                                        boxShadow: [BoxShadowWidget.light]
+                                      ),
                                       child: Center(
                                         child: Image.network(
                                           "${product?.imageUrl}",
@@ -244,6 +247,7 @@ class HomeScreen extends StatelessWidget {
                               decoration: BoxDecoration(
                                 color: AppColors.whiteAppColor,
                                 borderRadius: BorderRadius.circular(12),
+                                  boxShadow: [BoxShadowWidget.light]
                               ),
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,

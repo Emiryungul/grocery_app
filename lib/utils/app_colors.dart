@@ -23,5 +23,7 @@ class AppColors {
   static const Color regulerOrangeColor = Color(0xffFFA500);
   static const Color lightGreyColor = Color(0xffE0E0E0);
   static const Color greenButtonColor = Color(0xff23AA49);
+  static const Color greenBackgroundColor = Color(0xffC4F594);
+  static const Color greyBorderColor = Color (0xff7C7C7C);
 
 }
