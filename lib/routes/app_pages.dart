@@ -4,6 +4,7 @@ import 'package:grocery_app/ui/home_screen/home_screen.dart';
 import 'package:grocery_app/ui/products_by_category_screen/products_by_category_screen.dart';
 
 
+import '../ui/cart_screen/cart_screen.dart';
 import 'app_names.dart';
 
 class AppPages {
@@ -15,6 +16,10 @@ class AppPages {
     GetPage(
       name: AppRoutes.productsScreen,
       page: () =>  ProductsByCategoryScreen(),
+    ),
+    GetPage(
+      name: AppRoutes.cartScreen,
+      page: () =>  CartScreen(),
     ),
     ];
 }

@@ -19,6 +19,12 @@ class CartController extends GetxController{
 
   cart.CartModel? get cartValue => _cart.value;
 
+  @override
+  void onInit() {
+    super.onInit();
+    fetchCartItems();
+  }
+
   Future<void> addProductToCart({required String productId}) async {
     _isLoading.value = true;
     try {

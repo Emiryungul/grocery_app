@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get/get_common/get_reset.dart';
+import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_state_manager/src/simple/get_state.dart';
 import 'package:grocery_app/controllers/CartController.dart';
 import 'package:grocery_app/controllers/categories&products_controller.dart';
+import 'package:grocery_app/routes/app_names.dart';
 import 'package:grocery_app/ui/widgets/boxshadow_widget.dart';
 import 'package:sizer/sizer.dart';
 
@@ -23,16 +27,27 @@ class ProductsByCategoryScreen extends StatelessWidget {
                     SliverAppBar(
                       expandedHeight: 200.0,
                       pinned: true,
-                      backgroundColor: AppColors.whiteAppColor,
+                      backgroundColor: AppColors.darkPurpleColor,
+                      actions: [
+                        IconButton(
+                          icon: Icon(
+                            Icons.shopping_cart,
+                            color: Colors.white,
+                          ),
+                          onPressed: () {
+                            Get.toNamed(AppRoutes.cartScreen);
+                            cartController.fetchCartItems();
+                          },
+                        ),
+                      ],
                       flexibleSpace: FlexibleSpaceBar(
                         centerTitle: true,
                         title: AnimatedOpacity(
                           opacity: 1.0, // Optional: Smooth opacity effect during scrolling
                           duration: Duration(milliseconds: 300),
                           child: Padding(
-                            padding:  EdgeInsets.only(top: 5.h),
+                            padding: EdgeInsets.only(top: 5.h),
                             child: Align(
-
                               child: Text(
                                 '${categoryInfo?.name}',
                                 style: TextStyle(
@@ -51,16 +66,10 @@ class ProductsByCategoryScreen extends StatelessWidget {
                               "${categoryInfo?.imageUrl}",
                               fit: BoxFit.cover,
                             ),
-                            Container(
-                              color: Colors.black.withOpacity(0.4), // Overlay for better readability
-                            ),
-
                           ],
                         ),
                       ),
                     ),
-
-
                     SliverPadding(
                       padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 10.0),
                       sliver: SliverGrid(
