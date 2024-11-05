@@ -12,7 +12,6 @@ class CartScreen extends StatelessWidget {
         return Scaffold(
           body: SingleChildScrollView(
             child: Column(
-
               children: List.generate(cartController.cartValue?.data?.length ?? 0,
                   (index){
                 var product = cartController.cartValue?.data?[index];
