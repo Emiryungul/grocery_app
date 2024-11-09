@@ -5,6 +5,7 @@ import 'package:grocery_app/ui/products_by_category_screen/products_by_category_
 
 
 import '../ui/cart_screen/cart_screen.dart';
+import '../ui/login_screen/login_screen.dart';
 import 'app_names.dart';
 
 class AppPages {
@@ -20,6 +21,10 @@ class AppPages {
     GetPage(
       name: AppRoutes.cartScreen,
       page: () =>  CartScreen(),
+    ),
+    GetPage(
+      name: AppRoutes.loginScreen,
+      page: () =>  LoginScreen(),
     ),
     ];
 }

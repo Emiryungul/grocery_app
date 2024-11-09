@@ -8,7 +8,10 @@ class CartRepository {
   CartRepository({required this.apiService});
 
   Future<http.Response> fetchCartItems() async {
-    final response = await apiService.getRequest('/cart');
+    final response = await apiService.getRequest(
+        '/cart',
+        withAuth: true
+    );
     debugPrint(response.body);
     print(response.body);
     return response;
