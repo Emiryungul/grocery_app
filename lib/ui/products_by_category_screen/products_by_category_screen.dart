@@ -27,7 +27,7 @@ class ProductsByCategoryScreen extends StatelessWidget {
                     SliverAppBar(
                       expandedHeight: 200.0,
                       pinned: true,
-                      backgroundColor: AppColors.darkPurpleColor,
+                      backgroundColor: AppColors.blueLightCambridge,
                       actions: [
                         IconButton(
                           icon: Icon(

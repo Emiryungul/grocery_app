@@ -76,6 +76,8 @@ class AuthorizationController extends GetxController {
         final authorizationModel = userModelFromJson(responseBody);
         // Update the user in the controller
         _user.value = authorizationModel.user;
+        print(_user.value?.name);
+        print(_user.value?.email);
       } else {
         // Handle different status codes
         final error = HttpErrorHandler.handle(response.statusCode);

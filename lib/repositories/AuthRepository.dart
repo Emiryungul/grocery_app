@@ -23,6 +23,7 @@ class AuthorizationRepository {
     debugPrint(response.body);
     return response;
   }
+
   Future<http.Response> user() async {
     final response = await apiService.getRequest('/user', withAuth: true);
 

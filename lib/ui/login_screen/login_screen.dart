@@ -66,9 +66,9 @@ class _LoginScreenState extends State<LoginScreen> {
                                   ? Icons.visibility_off
                                   : Icons.visibility,
                               color: _isObscured
-                                  ? AppColors.regulerOrangeColor
+                                  ? AppColors.greyShipColor
                                   : AppColors
-                                  .regulerOrangeColor, // Change icon color
+                                  .greyShipColor, // Change icon color
                             ),
                             onPressed: () {
                               setState(() {
@@ -97,7 +97,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       }
                     },
                     child: AppButton(
-                        color: AppColors.regulerOrangeColor,
+                        color: AppColors.turquoiseColor,
                         text: "Giriş Yapın"
                     ),
                   ),
