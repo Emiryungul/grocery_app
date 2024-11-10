@@ -69,13 +69,14 @@ class HomeScreen extends StatelessWidget {
                           width: 5,
                         ),
                         Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Text("${authController.user?.name}",
+                            Text("${authController.userValue?.name}",
                                 style: TextStyle(
                                     color: AppColors.blackAppColor,
                                     fontWeight: FontWeight.w200)),
                             Text(
-                              "${authController.user?.email}",
+                              "${authController.userValue?.email}",
                               style: TextStyle(
                                   color: AppColors.blackAppColor,
                                   fontWeight: FontWeight.w700),
@@ -104,14 +105,14 @@ class HomeScreen extends StatelessWidget {
                     SliverToBoxAdapter(
                       child: CarouselSlider(
                         options: CarouselOptions(
-                          height: 20.h,
+                          height: 26.h,
                           autoPlay: true,
                           enlargeCenterPage: true,
                           aspectRatio: 16 / 9,
                           autoPlayCurve: Curves.fastOutSlowIn,
                           enableInfiniteScroll: true,
                           autoPlayAnimationDuration:
-                              const Duration(milliseconds: 800),
+                              const Duration(milliseconds: 1000),
                           viewportFraction: 0.8,
                         ),
                         items: imageList.map((imagePath) {

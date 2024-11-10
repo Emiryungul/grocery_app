@@ -6,6 +6,7 @@ import '../repositories/AuthRepository.dart';
 import '../utils/http_error_handler.dart';
 import '../utils/token_storage.dart';
 import 'CartController.dart';
+import '../models/user_info_model.dart' as userInfo;
 
 class AuthorizationController extends GetxController {
   final AuthorizationRepository authorizationRepository;
@@ -22,7 +23,10 @@ class AuthorizationController extends GetxController {
   var addressEmailController = TextEditingController();
   var passwordController = TextEditingController();
   var nameController = TextEditingController();
+  final Rxn<userInfo.GetUserModel> _userInf =
+  Rxn<userInfo.GetUserModel>();
 
+  userInfo.GetUserModel? get userValue => _userInf.value;
   bool get isLoading => _isLoading.value;
 
   User? get user => _user.value;
@@ -73,9 +77,9 @@ class AuthorizationController extends GetxController {
       if (response.statusCode == 200) {
         // Parse the response body
         final responseBody = response.body;
-        final authorizationModel = userModelFromJson(responseBody);
+        final authorizationModel = userInfo.getUserModelFromJson(responseBody);
         // Update the user in the controller
-        _user.value = authorizationModel.user;
+        _userInf.value = authorizationModel;
         print(_user.value?.name);
         print(_user.value?.email);
       } else {
