@@ -247,66 +247,72 @@ class HomeScreen extends StatelessWidget {
                           return Padding(
                               padding: const EdgeInsets.only(
                                   left: 5, right: 5, bottom: 10),
-                              child: Container(
-                                  decoration: BoxDecoration(
-                                    color: AppColors.whiteAppColor,
-                                    borderRadius: BorderRadius.circular(12),
-                                      boxShadow: [BoxShadowWidget.light]
-                                  ),
-                                  child: Column(
-                                    crossAxisAlignment: CrossAxisAlignment.start,
-                                    children: [
-                                      SizedBox(
-                                        height: 2.h,
-                                      ),
-                                      Center(
-                                          child: Image.network(
-                                        "${product?.imageUrl}",
-                                            fit: BoxFit.cover,
-                                            width: 100,
-                                            height: 100,
-                                      )),
-                                      Padding(
-                                        padding: const EdgeInsets.only(
-                                            left: 15, top: 30),
-                                        child: Text(
-                                          "${product?.name}",
-                                          style: TextStyle(
-                                              fontWeight: FontWeight.bold,
-                                              fontSize: 14),
+                              child: InkWell(
+                                onTap: (){
+                                  controller.fetchProductDetail("${product?.id}");
+                                  Get.toNamed(AppRoutes.productDetail);
+                                },
+                                child: Container(
+                                    decoration: BoxDecoration(
+                                      color: AppColors.whiteAppColor,
+                                      borderRadius: BorderRadius.circular(12),
+                                        boxShadow: [BoxShadowWidget.light]
+                                    ),
+                                    child: Column(
+                                      crossAxisAlignment: CrossAxisAlignment.start,
+                                      children: [
+                                        SizedBox(
+                                          height: 2.h,
                                         ),
-                                      ),
-                                      Padding(
-                                        padding: const EdgeInsets.only(left: 15),
-                                        child: Text(
-                                          "${product?.description}",
-                                          style: TextStyle(
-                                              fontWeight: FontWeight.bold,
-                                              fontSize: 16,
-                                              color: AppColors.redColor),
-                                        ),
-                                      ),
-                                      Row(
-                                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                        children: [
-                                          Container(),
-                                          Padding(
-                                            padding: const EdgeInsets.only(right: 7,),
-                                            child: Container(
-                                              width: 36,
-                                              height: 36,
-                                              decoration: BoxDecoration(
-                                                shape:BoxShape.circle,
-                                                color: AppColors.greenButtonColor,
-                                              ),
-                                              child: Icon(Icons.add,color: AppColors.whiteAppColor,),
-                                            ),
+                                        Center(
+                                            child: Image.network(
+                                          "${product?.imageUrl}",
+                                              fit: BoxFit.cover,
+                                              width: 100,
+                                              height: 100,
+                                        )),
+                                        Padding(
+                                          padding: const EdgeInsets.only(
+                                              left: 15, top: 30),
+                                          child: Text(
+                                            "${product?.name}",
+                                            style: TextStyle(
+                                                fontWeight: FontWeight.bold,
+                                                fontSize: 14),
                                           ),
+                                        ),
+                                        Padding(
+                                          padding: const EdgeInsets.only(left: 15),
+                                          child: Text(
+                                            "${product?.feature}",
+                                            style: TextStyle(
+                                                fontWeight: FontWeight.bold,
+                                                fontSize: 16,
+                                                color: AppColors.redColor),
+                                          ),
+                                        ),
+                                        Row(
+                                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                          children: [
+                                            Container(),
+                                            Padding(
+                                              padding: const EdgeInsets.only(right: 7,),
+                                              child: Container(
+                                                width: 36,
+                                                height: 36,
+                                                decoration: BoxDecoration(
+                                                  shape:BoxShape.circle,
+                                                  color: AppColors.green,
+                                                ),
+                                                child: Icon(Icons.add,color: AppColors.whiteAppColor,),
+                                              ),
+                                            ),
 
-                                        ],
-                                      )
-                                    ],
-                                  )));
+                                          ],
+                                        )
+                                      ],
+                                    )),
+                              ));
                         },
                         childCount: controller.Products?.data?.length ?? 0, // Number of items in the grid
                       ),

@@ -28,53 +28,17 @@ class Datum {
   int? id;
   String? name;
   String? description;
-  String? imageUrl;
-  List<Product>? products;
-  String? createdAt;
-  String? updatedAt;
-
-  Datum({
-    this.id,
-    this.name,
-    this.description,
-    this.imageUrl,
-    this.products,
-    this.createdAt,
-    this.updatedAt,
-  });
-
-  factory Datum.fromJson(Map<String, dynamic> json) => Datum(
-    id: json["id"],
-    name: json["name"],
-    description: json["description"],
-    imageUrl: json["image_url"],
-    products: json["products"] == null ? [] : List<Product>.from(json["products"]!.map((x) => Product.fromJson(x))),
-    createdAt: json["created_at"],
-    updatedAt: json["updated_at"],
-  );
-
-  Map<String, dynamic> toJson() => {
-    "id": id,
-    "name": name,
-    "description": description,
-    "image_url": imageUrl,
-    "products": products == null ? [] : List<dynamic>.from(products!.map((x) => x.toJson())),
-    "created_at": createdAt,
-    "updated_at": updatedAt,
-  };
-}
-
-class Product {
-  int? id;
-  String? name;
-  String? description;
   String? price;
   String? imagePath;
   int? categoryId;
   dynamic createdAt;
   dynamic updatedAt;
+  String? feature;
+  String? expiration;
+  String? energy;
+  String? imageUrl;
 
-  Product({
+  Datum({
     this.id,
     this.name,
     this.description,
@@ -83,9 +47,13 @@ class Product {
     this.categoryId,
     this.createdAt,
     this.updatedAt,
+    this.feature,
+    this.expiration,
+    this.energy,
+    this.imageUrl,
   });
 
-  factory Product.fromJson(Map<String, dynamic> json) => Product(
+  factory Datum.fromJson(Map<String, dynamic> json) => Datum(
     id: json["id"],
     name: json["name"],
     description: json["description"],
@@ -94,6 +62,10 @@ class Product {
     categoryId: json["category_id"],
     createdAt: json["created_at"],
     updatedAt: json["updated_at"],
+    feature: json["feature"],
+    expiration: json["expiration"],
+    energy: json["energy"],
+    imageUrl: json["image_url"],
   );
 
   Map<String, dynamic> toJson() => {
@@ -105,5 +77,9 @@ class Product {
     "category_id": categoryId,
     "created_at": createdAt,
     "updated_at": updatedAt,
+    "feature": feature,
+    "expiration": expiration,
+    "energy": energy,
+    "image_url": imageUrl,
   };
 }

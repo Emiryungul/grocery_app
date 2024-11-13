@@ -6,6 +6,7 @@ import '../utils/token_storage.dart';
 import '../models/categories_model.dart' as categories;
 import '../models/allproducts_model.dart' as products;
 import '../models/products_by_category_model.dart' as category_products;
+import '../models/product_details_model.dart'as product_detail;
 
 class CategoriesController extends GetxController{
   final CategoriesRepository categoriesRepository;
@@ -19,13 +20,16 @@ class CategoriesController extends GetxController{
   Rxn<categories.CategoriesModel>();
   final Rxn<products.AllProductsModel> _products =
   Rxn<products.AllProductsModel>();
-
   final Rxn<category_products.ProductsByCategoryModel> _categorysProducts =
   Rxn<category_products.ProductsByCategoryModel>();
+
+  final Rxn<product_detail.ProductDetailModel> _productDetail =
+  Rxn<product_detail.ProductDetailModel>();
 
   categories.CategoriesModel? get category => _category.value;
   products.AllProductsModel? get Products => _products.value;
   category_products.ProductsByCategoryModel? get ProductsByCategory => _categorysProducts.value;
+  product_detail.ProductDetailModel? get productDetail => _productDetail.value;
 
   @override
   void onInit() {
@@ -47,8 +51,8 @@ class CategoriesController extends GetxController{
         _category.value = categoriesModel;
         debugPrint(responseBody);
 
-        print("*****************");
-        print(category?.toJson());
+        //print("*****************");
+        //print(category?.toJson());
       } else {
         // Handle different status codes
         final error = HttpErrorHandler.handle(response.statusCode);
@@ -56,7 +60,7 @@ class CategoriesController extends GetxController{
       }
     } catch (e) {
       Get.snackbar('Error', "$e");
-      print("$e");
+      //print("$e");
     } finally {
       _isLoading.value = false;
       update();
@@ -75,8 +79,8 @@ class CategoriesController extends GetxController{
         _products.value = productsModel;
         debugPrint(responseBody);
 
-        print("*****************");
-        print(Products?.toJson());
+        //print("*****************");
+        //print(Products?.toJson());
       } else {
         // Handle different status codes
         final error = HttpErrorHandler.handle(response.statusCode);
@@ -84,12 +88,13 @@ class CategoriesController extends GetxController{
       }
     } catch (e) {
       Get.snackbar('Error', "$e");
-      print("$e");
+      //print("$e");
     } finally {
       _isLoading.value = false;
       update();
     }
   }
+
   Future<void> fetchProductsByCategory(int id) async {
     _isLoading.value = true;
     try {
@@ -110,7 +115,34 @@ class CategoriesController extends GetxController{
       }
     } catch (e) {
       Get.snackbar('Error', "$e");
-      print("$e");
+     // print("$e");
+    } finally {
+      _isLoading.value = false;
+      update();
+    }
+  }
+
+  Future<void> fetchProductDetail(String id) async {
+    _isLoading.value = true;
+    try {
+      final response = await categoriesRepository.fetchProductDetail(id);
+      if (response.statusCode == 200 || response.statusCode == 201 ) {
+        // Parse the response body
+        final responseBody = response.body;
+        final productsModel = product_detail.productDetailModelFromJson(responseBody);
+        // Update the user and token in the controller
+        _productDetail.value = productsModel;
+        //debugPrint(responseBody);
+
+
+      } else {
+        // Handle different status codes
+        final error = HttpErrorHandler.handle(response.statusCode);
+        Get.snackbar('Error', error);
+      }
+    } catch (e) {
+      Get.snackbar('Error', "$e");
+      //print("$e");
     } finally {
       _isLoading.value = false;
       update();

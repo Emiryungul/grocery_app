@@ -11,7 +11,6 @@ class AppColors {
   static const Color regularGreenColor=Color(0xff239896);
   static const Color greyButtonBackGroundColor = Color(0xFFf8f8f8);
   static const Color lightGreyColor = Color(0xffE0E0E0);
-  static const Color greenButtonColor = Color(0xff23AA49);
   static const Color greenBackgroundColor = Color(0xffC4F594);
   static const Color greyBorderColor = Color (0xff7C7C7C);
   static const Color turquoiseColor = Color(0xff2DE1C2);
@@ -22,4 +21,8 @@ class AppColors {
   static const Color blueDark = Color(0xff545E75);
   static const Color redDark = Color(0xff3F0D12);
   static const Color redColor = Color(0xFFFF0000);
+  static const Color greenOlive = Color(0xff3D550C);
+  static const Color greenLime = Color(0xff81B622);
+  static const Color greenYellow = Color(0xffECF87F);
+  static const Color green = Color(0xff59981A);
 }

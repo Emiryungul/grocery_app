@@ -26,10 +26,6 @@ class CartScreen extends StatelessWidget {
               style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
             ),
           ),
-          bottomNavigationBar: BottomAppBar(
-            color: AppColors.scaffoldBackgroundColor,
-            child: AppButton(color: AppColors.blueLightCambridge, text: "text"),
-          ),
           body: GetBuilder<AuthorizationController>(builder: (controller) {
             if (controller.token == null) {
               return Center(
@@ -57,65 +53,42 @@ class CartScreen extends StatelessWidget {
             } else {
               return SingleChildScrollView(
                 child: Column(
-                  children: List.generate(
-                      cartController.cartValue?.data?.length ?? 0, (index) {
-                    var product = cartController.cartValue?.data?[index];
-                    return Padding(
-                      padding:
-                          const EdgeInsets.only(right: 5, left: 5, top: 20),
-                      child: Container(
-                        height: 15.h,
-                        decoration: BoxDecoration(
-                            color: AppColors.scaffoldBackgroundColor,
-                            boxShadow: [BoxShadowWidget.light],
-                            borderRadius: BorderRadius.circular(4)),
-                        child: Row(
-                          children: [
-                            Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: Image.network(
-                                  height: 100,
-                                  width: 100,
-                                  "${product?.imageUrl}"),
-                            ),
-                            Padding(
-                              padding: const EdgeInsets.only(top: 20, left: 15),
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Text(
-                                    "${product?.name}",
-                                    style: TextStyle(
-                                        fontWeight: FontWeight.w600,
-                                        fontSize: 15),
-                                  ),
-                                  SizedBox(
-                                    height: 12,
-                                  ),
-                                  Row(
+                  children: [
+                    Column(
+                      children: List.generate(
+                          cartController.cartValue?.data?.length ?? 0, (index) {
+                        var product = cartController.cartValue?.data?[index];
+                        return Padding(
+                          padding:
+                              const EdgeInsets.only(right: 5, left: 5, top: 20),
+                          child: Container(
+                            height: 15.h,
+                            decoration: BoxDecoration(
+                                color: AppColors.scaffoldBackgroundColor,
+                                boxShadow: [BoxShadowWidget.light],
+                                borderRadius: BorderRadius.circular(4)),
+                            child: Row(
+                              children: [
+                                Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: Image.network(
+                                      height: 100,
+                                      width: 100,
+                                      "${product?.imageUrl}"),
+                                ),
+                                Padding(
+                                  padding: const EdgeInsets.only(top: 20, left: 15),
+                                  child: Column(
+                                    crossAxisAlignment: CrossAxisAlignment.start,
                                     children: [
-                                      Container(
-                                        width: 30,
-                                        height: 30,
-                                        decoration: BoxDecoration(
-                                            shape: BoxShape.rectangle,
-                                            color: AppColors.whiteAppColor,
-                                            border: Border.all(
-                                                color:
-                                                    AppColors.greyBorderColor),
-                                            borderRadius:
-                                                BorderRadius.circular(5)),
-                                        child: Icon(
-                                          Icons.remove,
-                                          color: AppColors.blueDarkCambridge,
-                                        ),
+                                      Text(
+                                        "${product?.name}",
+                                        style: TextStyle(
+                                            fontWeight: FontWeight.w600,
+                                            fontSize: 15),
                                       ),
                                       SizedBox(
-                                        width: 10,
-                                      ),
-                                      Text("${product?.quantity}"),
-                                      SizedBox(
-                                        width: 10,
+                                        height: 12,
                                       ),
                                       Row(
                                         children: [
@@ -125,20 +98,37 @@ class CartScreen extends StatelessWidget {
                                             decoration: BoxDecoration(
                                               shape: BoxShape.rectangle,
                                               color: AppColors.whiteAppColor,
-                                              borderRadius:
-                                                  BorderRadius.circular(5),
-                                              border: Border.all(
-                                                  color: AppColors
-                                                      .greyBorderColor),
+                                              border: Border.all(color: AppColors.greyBorderColor),
+                                              borderRadius: BorderRadius.circular(5),
+                                            ),
+                                            child: Icon(
+                                              Icons.remove,
+                                              color: AppColors.blueDarkCambridge,
+                                            ),
+                                          ),
+                                          SizedBox(width: 10),
+                                          GetBuilder<CartController>( // Wrap in GetBuilder to update when cart changes
+                                            builder: (_) => Text("${product?.quantity}"),
+                                          ),
+                                          SizedBox(width: 10),
+                                          Container(
+                                            width: 30,
+                                            height: 30,
+                                            decoration: BoxDecoration(
+                                              shape: BoxShape.rectangle,
+                                              color: AppColors.whiteAppColor,
+                                              border: Border.all(color: AppColors.greyBorderColor),
+                                              borderRadius: BorderRadius.circular(5),
                                             ),
                                             child: InkWell(
-                                              onTap: (){
-                                               // cartController.addProductToCart(productId: "${product?.productId}");
-                                                //cartController.fetchCartItems();
+                                              onTap: () {
+                                                cartController.addProductToCart(productId: "${product?.productId}");
+                                                cartController.fetchCartItems();
+                                                cartController.update(); // Update the CartController state
                                               },
                                               child: Icon(
                                                 Icons.add,
-                                                color: AppColors.greenButtonColor,
+                                                color: AppColors.green,
                                               ),
                                             ),
                                           ),
@@ -146,26 +136,30 @@ class CartScreen extends StatelessWidget {
                                       ),
                                     ],
                                   ),
-                                ],
-                              ),
+                                ),
+                                Spacer(),
+                                Padding(
+                                  padding: const EdgeInsets.all(14.0),
+                                  child: Column(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      Container(),
+                                      Text("${product?.totalPrice}₺")
+                                    ],
+                                  ),
+                                )
+                              ],
                             ),
-                            Spacer(),
-                            Padding(
-                              padding: const EdgeInsets.all(14.0),
-                              child: Column(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Container(),
-                                  Text("${product?.price}")
-                                ],
-                              ),
-                            )
-                          ],
-                        ),
-                      ),
-                    );
-                  }),
+                          ),
+                        );
+                      }),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: AppButton(color: AppColors.blueLightCambridge, text: "Go To Checkout"),
+                    )
+                  ],
                 ),
               );
             }
