@@ -82,63 +82,69 @@ class ProductsByCategoryScreen extends StatelessWidget {
                         delegate: SliverChildBuilderDelegate(
                               (BuildContext context, int index) {
                             var products = controller.ProductsByCategory?.data?.products?[index];
-                            return Container(
-                              decoration: BoxDecoration(
-                                //boxShadow: [BoxShadowWidget.medium],
-                                borderRadius: BorderRadius.circular(15),
-                                color: AppColors.whiteAppColor,
-                                boxShadow: [BoxShadowWidget.light]
-                              ),
-                              child: Padding(
-                                padding: const EdgeInsets.only(top: 25),
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Center(
-                                      child: Image.network(
-                                        "${products?.imageUrl}",
-                                        fit: BoxFit.cover,
-                                        width: 80,
-                                        height: 80,
-                                      ),
-                                    ),
-                                    SizedBox(height: 12,),
-                                    Padding(
-                                        padding: const EdgeInsets.only(left: 10),
-                                      child: Text("${products?.name}",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 16),),
-                                    ),
-                                    Padding(
-                                      padding: const EdgeInsets.only(left: 10),
-                                      child: Text("${products?.description}",style: TextStyle(fontWeight: FontWeight.w400,fontSize: 12)),
-                                    ),
-                                    SizedBox(height: 30,),
-                                    Padding(
-                                      padding: const EdgeInsets.only(left: 10,right: 10),
-                                      child: Row(
-                                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                        children: [
-                                          Text("\$""${products?.price}",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 18)),
-                                          InkWell(
-                                            onTap: (){
-                                              cartController.addProductToCart(productId: "${products?.id}");
-                                            },
-                                            child: Container(
-                                              width: 42,
-                                              height: 42,
-                                              decoration: BoxDecoration(
-                                                shape:BoxShape.rectangle,
-                                                borderRadius: BorderRadius.circular(12),
-                                                color: AppColors.greenButtonColor,
-                                              ),
-                                              child: Icon(Icons.add,color: AppColors.whiteAppColor,),
-                                            ),
-                                          ),
-                                        ],
-                                      ),
-                                    )
-                                  ]
+                            return InkWell(
+                              onTap: (){
+                                controller.fetchProductDetail("${products?.id}");
+                                Get.toNamed(AppRoutes.productDetail);
+                              },
+                              child: Container(
+                                decoration: BoxDecoration(
+                                  //boxShadow: [BoxShadowWidget.medium],
+                                  borderRadius: BorderRadius.circular(15),
+                                  color: AppColors.whiteAppColor,
+                                  boxShadow: [BoxShadowWidget.light]
                                 ),
-                              )
+                                child: Padding(
+                                  padding: const EdgeInsets.only(top: 25),
+                                  child: Column(
+                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    children: [
+                                      Center(
+                                        child: Image.network(
+                                          "${products?.imageUrl}",
+                                          fit: BoxFit.cover,
+                                          width: 80,
+                                          height: 80,
+                                        ),
+                                      ),
+                                      SizedBox(height: 12,),
+                                      Padding(
+                                          padding: const EdgeInsets.only(left: 10),
+                                        child: Text("${products?.name}",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 16),),
+                                      ),
+                                      Padding(
+                                        padding: const EdgeInsets.only(left: 10),
+                                        child: Text("${products?.feature}",style: TextStyle(fontWeight: FontWeight.w400,fontSize: 12)),
+                                      ),
+                                      SizedBox(height: 30,),
+                                      Padding(
+                                        padding: const EdgeInsets.only(left: 10,right: 10),
+                                        child: Row(
+                                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                          children: [
+                                            Text("\$""${products?.price}",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 18)),
+                                            InkWell(
+                                              onTap: (){
+                                                cartController.addProductToCart(productId: "${products?.id}");
+                                              },
+                                              child: Container(
+                                                width: 42,
+                                                height: 42,
+                                                decoration: BoxDecoration(
+                                                  shape:BoxShape.rectangle,
+                                                  borderRadius: BorderRadius.circular(12),
+                                                  color: AppColors.green,
+                                                ),
+                                                child: Icon(Icons.add,color: AppColors.whiteAppColor,),
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                      )
+                                    ]
+                                  ),
+                                )
+                              ),
                             );
                           },
                           childCount: controller.ProductsByCategory?.data?.products?.length ?? 0 // Number of grid items

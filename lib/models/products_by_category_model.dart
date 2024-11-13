@@ -89,6 +89,9 @@ class Product {
   int? categoryId;
   dynamic createdAt;
   dynamic updatedAt;
+  String? feature;
+  String? expiration;
+  String? energy;
   String? imageUrl;
 
   Product({
@@ -100,6 +103,9 @@ class Product {
     this.categoryId,
     this.createdAt,
     this.updatedAt,
+    this.feature,
+    this.expiration,
+    this.energy,
     this.imageUrl,
   });
 
@@ -112,6 +118,9 @@ class Product {
     categoryId: json["category_id"],
     createdAt: json["created_at"],
     updatedAt: json["updated_at"],
+    feature: json["feature"],
+    expiration: json["expiration"],
+    energy: json["energy"],
     imageUrl: json["image_url"],
   );
 
@@ -124,6 +133,9 @@ class Product {
     "category_id": categoryId,
     "created_at": createdAt,
     "updated_at": updatedAt,
+    "feature": feature,
+    "expiration": expiration,
+    "energy": energy,
     "image_url": imageUrl,
   };
 }
