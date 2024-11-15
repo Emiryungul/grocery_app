@@ -100,14 +100,10 @@ class CategoriesController extends GetxController{
     try {
       final response = await categoriesRepository.fetchProductsByCategory(id);
       if (response.statusCode == 200 || response.statusCode == 201 ) {
-        // Parse the response body
         final responseBody = response.body;
         final categoryProductsModel = category_products.productsByCategoryModelFromJson(responseBody);
-        // Update the user and token in the controller
         _categorysProducts.value = categoryProductsModel ;
         debugPrint(responseBody);
-
-
       } else {
         // Handle different status codes
         final error = HttpErrorHandler.handle(response.statusCode);

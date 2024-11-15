@@ -20,6 +20,7 @@ class ProductDetailScreen extends StatelessWidget {
       return Scaffold(
         appBar: AppBar(
           backgroundColor: AppColors.blueLightCambridge,
+          centerTitle: true,
           actions: [
             IconButton(
               icon: Icon(
@@ -38,21 +39,31 @@ class ProductDetailScreen extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              if (product?.imageUrl != null)
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Center(
-                    child: ClipRRect(
-                      borderRadius: BorderRadius.circular(100), // Circular crop
+              Stack(
+                children: [
+                  // Custom Painted Dome Shape
+                  ClipPath(
+                    clipper: DomeClipper(),
+                    child: Container(
+                      height: 200.0,
+                      color: Colors.greenAccent.shade100,
+                    ),
+                  ),
+                  // Product Detail Content
+                  Padding(
+                    padding: const EdgeInsets.only(top: 60.0),
+                    child: Center(
                       child: Image.network(
                         "${product?.imageUrl}", // Display product image
-                        width: 250, // Adjust size as needed
-                        height: 250,
+                        width: 180, // Adjust size as needed
+                        height: 180,
                         fit: BoxFit.cover,
                       ),
                     ),
                   ),
-                ),
+                ],
+              ),
+
               SizedBox(height: 10),
               Padding(
                 padding: const EdgeInsets.only(left: 20),
@@ -243,4 +254,21 @@ class ProductDetailScreen extends StatelessWidget {
       );
     });
   }
+}
+class DomeClipper extends CustomClipper<Path> {
+  @override
+  Path getClip(Size size) {
+    Path path = Path();
+    path.lineTo(0, size.height - 80);
+    path.quadraticBezierTo(
+      size.width / 2, size.height,
+      size.width, size.height - 80,
+    );
+    path.lineTo(size.width, 0);
+    path.close();
+    return path;
+  }
+
+  @override
+  bool shouldReclip(CustomClipper<Path> oldClipper) => false;
 }

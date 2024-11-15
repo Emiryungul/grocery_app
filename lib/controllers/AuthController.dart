@@ -94,6 +94,14 @@ class AuthorizationController extends GetxController {
       _isLoading.value = false;
     }
   }
+  Future<void> logOut() async {
+    //firebaseApi.unSubscribeFromNotificationTopics();
+    await tokenStorage.deleteToken();
+    _token.value = null;
+    _user.value = null;
+    Get.snackbar('Çıkış', 'Hesaptan Çıkış Yapıldı');
+    update();
+  }
 
   Future<void> _checkAuthenticationStatus() async {
     final token = await tokenStorage.getToken();
