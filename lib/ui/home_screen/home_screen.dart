@@ -14,9 +14,9 @@ import '../../utils/app_images.dart';
 
 class HomeScreen extends StatelessWidget {
   final List<String> imageList = [
-    AppImages.splash1PNG,
-    AppImages.splash2PNG,
-    AppImages.splash3PNG,
+    AppImages.shopsPNG,
+    AppImages.restaurantPNG,
+    AppImages.grocerysPNG,
   ];
   final List<String> categoriesList = [
     AppImages.applePNG,
@@ -48,20 +48,25 @@ class HomeScreen extends StatelessWidget {
                       children: [
                         Padding(
                           padding: const EdgeInsets.only(left: 15),
-                          child: Container(
-                            width: 13.w,
-                            height: 13.h,
-                            decoration: BoxDecoration(
-                              shape: BoxShape.circle,
-                              color: AppColors.whiteAppColor,
-                              boxShadow: [
-                                BoxShadow(
-                                  color: Colors.grey.withOpacity(0.5),
-                                  spreadRadius: 1,
-                                  blurRadius: 5,
-                                  offset: Offset(0, 3),
-                                ),
-                              ],
+                          child: InkWell(
+                            onTap: (){
+                              Get.toNamed(AppRoutes.profileScreen);
+                            },
+                            child: Container(
+                              width: 13.w,
+                              height: 13.h,
+                              decoration: BoxDecoration(
+                                shape: BoxShape.circle,
+                                color: AppColors.whiteAppColor,
+                                boxShadow: [
+                                  BoxShadow(
+                                    color: Colors.grey.withOpacity(0.5),
+                                    spreadRadius: 1,
+                                    blurRadius: 5,
+                                    offset: Offset(0, 3),
+                                  ),
+                                ],
+                              ),
                             ),
                           ),
                         ),
@@ -71,18 +76,33 @@ class HomeScreen extends StatelessWidget {
                         Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Text("${authController.userValue?.name}",
+                            if (authController.token != null) ...[
+                              Text(
+                                "${authController.userValue?.name}",
                                 style: TextStyle(
-                                    color: AppColors.blackAppColor,
-                                    fontWeight: FontWeight.w200)),
-                            Text(
-                              "${authController.userValue?.email}",
-                              style: TextStyle(
                                   color: AppColors.blackAppColor,
-                                  fontWeight: FontWeight.w700),
-                            ),
+                                  fontWeight: FontWeight.w200,
+                                ),
+                              ),
+                              Text(
+                                "${authController.userValue?.email}",
+                                style: TextStyle(
+                                  color: AppColors.blackAppColor,
+                                  fontWeight: FontWeight.w700,
+                                ),
+                              ),
+                            ] else ...[
+                              Text(
+                                "Guest",
+                                style: TextStyle(
+                                  color: AppColors.blackAppColor,
+                                  fontWeight: FontWeight.w700,
+                                ),
+                              ),
+                            ],
                           ],
-                        ),
+                        )
+
                         /* Spacer(),
                               Container(
                                 width: 30.w,
@@ -105,7 +125,7 @@ class HomeScreen extends StatelessWidget {
                     SliverToBoxAdapter(
                       child: CarouselSlider(
                         options: CarouselOptions(
-                          height: 26.h,
+                          height: 25.h,
                           autoPlay: true,
                           enlargeCenterPage: true,
                           aspectRatio: 16 / 9,
@@ -119,13 +139,13 @@ class HomeScreen extends StatelessWidget {
                           return Builder(
                             builder: (BuildContext context) {
                               return Container(
-                                width: MediaQuery.of(context).size.width,
+                                width: 600,
                                 margin: const EdgeInsets.symmetric(horizontal: 5.0),
                                 decoration:
-                                    const BoxDecoration(color: Colors.amber),
+                                    const BoxDecoration(color: AppColors.whiteAppColor),
                                 child: Image.asset(
                                   imagePath,
-                                  fit: BoxFit.cover,
+                                  //fit: BoxFit.cover,
                                 ),
                               );
                             },

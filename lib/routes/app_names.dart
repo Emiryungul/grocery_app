@@ -4,4 +4,5 @@ abstract class AppRoutes {
   static const cartScreen = '/cartscreen';
   static const loginScreen = '/loginscreen';
   static const productDetail = '/productdetail';
+  static const profileScreen = '/profileScreen';
 }

@@ -17,20 +17,23 @@ class ProfileScreen extends StatelessWidget {
           body: SingleChildScrollView(
             child: Column(
               children: [
-                Center(
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      TextButton(onPressed: (){
-                        if(authController.token != null){
-                          authController.logOut();
-                        }
-                        else{
-                          Get.toNamed(AppRoutes.loginScreen);
-                        }
-                      },child: Text(authController.token != null ? "Çıkıs Yap" : "Giris Yap",style: TextStyle(fontWeight: FontWeight.w200,color: Colors.black),)),
-                      Icon(Icons.power_settings_new,color: Colors.red,)
-                    ],
+                Padding(
+                  padding: const EdgeInsets.only(top: 100),
+                  child: Center(
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        TextButton(onPressed: (){
+                          if(authController.token != null){
+                            authController.logOut();
+                          }
+                          else{
+                            Get.offAllNamed(AppRoutes.loginScreen);
+                          }
+                        },child: Text(authController.token != null ? "Çıkıs Yap" : "Giris Yap",style: TextStyle(fontWeight: FontWeight.w200,color: Colors.black),)),
+                        Icon(Icons.power_settings_new,color: Colors.red,)
+                      ],
+                    ),
                   ),
                 )
               ],

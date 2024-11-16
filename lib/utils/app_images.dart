@@ -36,6 +36,9 @@ class AppImages{
    static const String splash1PNG = 'assets/images/pictures/splash1.png';
    static const String splash2PNG = 'assets/images/pictures/splash2.png';
    static const String splash3PNG = 'assets/images/pictures/splash3.png';
+   static const String grocerysPNG = 'assets/images/pictures/groceries.png';
+   static const String restaurantPNG = 'assets/images/pictures/restaurant.png';
+   static const String shopsPNG= 'assets/images/pictures/shops.png';
 
 
 
