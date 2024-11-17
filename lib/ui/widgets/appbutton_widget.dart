@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 class AppButton extends StatelessWidget {
-  const AppButton({super.key, required this.color, required this.text});
+  const AppButton({super.key, required this.color, required this.text,  this.textStyle});
   final Color color;
   final String text;
+  final TextStyle? textStyle;
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +24,7 @@ class AppButton extends StatelessWidget {
       child:
       Center(
         child:
-        Text(text,style: TextStyle(fontSize: 14,color: Colors.white,fontWeight: FontWeight.w600),),
+        Text(text,style: textStyle,),
       ),
     );
   }

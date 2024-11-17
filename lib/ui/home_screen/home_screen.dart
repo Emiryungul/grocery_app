@@ -67,7 +67,9 @@ class HomeScreen extends StatelessWidget {
                                   ),
                                 ],
                               ),
+                              child: Icon(Icons.person,),
                             ),
+
                           ),
                         ),
                         SizedBox(

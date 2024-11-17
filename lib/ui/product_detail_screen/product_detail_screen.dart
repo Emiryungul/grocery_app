@@ -42,7 +42,7 @@ class ProductDetailScreen extends StatelessWidget {
               },
               child: BottomAppBar(
                 color: AppColors.scaffoldBackgroundColor,
-                child: AppButton(color: AppColors.blueLightCambridge, text: "Add to Cart"),
+                child: AppButton(color: AppColors.blueLightCambridge, text: "Add to Cart",textStyle: TextStyle(fontSize: 20,color: AppColors.whiteAppColor),),
               ),
             ),
             body: SingleChildScrollView(
@@ -169,7 +169,7 @@ class ProductDetailScreen extends StatelessWidget {
                                     Text(
                                       '${product?.expiration}',
                                       style: TextStyle(
-                                        color: AppColors.blueDark,
+                                        color: AppColors.greenLime,
                                         fontWeight: FontWeight.bold,
                                         fontSize: 16,
                                       ),
@@ -177,7 +177,7 @@ class ProductDetailScreen extends StatelessWidget {
                                     Text(
                                       'Expiration',
                                       style: TextStyle(
-                                        color: Colors.grey,
+                                        color: AppColors.greenLime,
                                         fontSize: 12,
                                       ),
                                     ),
@@ -205,7 +205,7 @@ class ProductDetailScreen extends StatelessWidget {
                                     Text(
                                       '${product?.energy}',
                                       style: TextStyle(
-                                        color: AppColors.redColor,
+                                        color: AppColors.greenLime,
                                         fontWeight: FontWeight.bold,
                                         fontSize: 16,
                                       ),
@@ -241,7 +241,7 @@ class ProductDetailScreen extends StatelessWidget {
                                     Text(
                                       '${product?.feature}',
                                       style: TextStyle(
-                                        color: AppColors.blueDark,
+                                        color: AppColors.greenLime,
                                         fontWeight: FontWeight.bold,
                                         fontSize: 16,
                                       ),

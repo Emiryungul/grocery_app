@@ -26,6 +26,10 @@ class CartScreen extends StatelessWidget {
               style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
             ),
           ),
+          bottomNavigationBar: BottomAppBar(
+            color: AppColors.scaffoldBackgroundColor,
+            child: AppButton(color: AppColors.blueLightCambridge, text: "Go to Check out",textStyle: TextStyle(fontSize: 20,color: AppColors.whiteAppColor),),
+          ),
           body: GetBuilder<AuthorizationController>(builder: (controller) {
             if (controller.token == null) {
               return Center(
@@ -77,9 +81,11 @@ class CartScreen extends StatelessWidget {
                                       "${product?.imageUrl}"),
                                 ),
                                 Padding(
-                                  padding: const EdgeInsets.only(top: 20, left: 15),
+                                  padding:
+                                      const EdgeInsets.only(top: 20, left: 15),
                                   child: Column(
-                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
                                     children: [
                                       Text(
                                         "${product?.name}",
@@ -98,17 +104,23 @@ class CartScreen extends StatelessWidget {
                                             decoration: BoxDecoration(
                                               shape: BoxShape.rectangle,
                                               color: AppColors.whiteAppColor,
-                                              border: Border.all(color: AppColors.greyBorderColor),
-                                              borderRadius: BorderRadius.circular(5),
+                                              border: Border.all(
+                                                  color: AppColors
+                                                      .greyBorderColor),
+                                              borderRadius:
+                                                  BorderRadius.circular(5),
                                             ),
                                             child: Icon(
                                               Icons.remove,
-                                              color: AppColors.blueDarkCambridge,
+                                              color:
+                                                  AppColors.blueDarkCambridge,
                                             ),
                                           ),
                                           SizedBox(width: 10),
-                                          GetBuilder<CartController>( // Wrap in GetBuilder to update when cart changes
-                                            builder: (_) => Text("${product?.quantity}"),
+                                          GetBuilder<CartController>(
+                                            // Wrap in GetBuilder to update when cart changes
+                                            builder: (_) =>
+                                                Text("${product?.quantity}"),
                                           ),
                                           SizedBox(width: 10),
                                           Container(
@@ -117,14 +129,20 @@ class CartScreen extends StatelessWidget {
                                             decoration: BoxDecoration(
                                               shape: BoxShape.rectangle,
                                               color: AppColors.whiteAppColor,
-                                              border: Border.all(color: AppColors.greyBorderColor),
-                                              borderRadius: BorderRadius.circular(5),
+                                              border: Border.all(
+                                                  color: AppColors
+                                                      .greyBorderColor),
+                                              borderRadius:
+                                                  BorderRadius.circular(5),
                                             ),
                                             child: InkWell(
                                               onTap: () {
-                                                cartController.addProductToCart(productId: "${product?.productId}");
+                                                cartController.addProductToCart(
+                                                    productId:
+                                                        "${product?.productId}");
                                                 cartController.fetchCartItems();
-                                                cartController.update(); // Update the CartController state
+                                                cartController
+                                                    .update(); // Update the CartController state
                                               },
                                               child: Icon(
                                                 Icons.add,
@@ -145,7 +163,12 @@ class CartScreen extends StatelessWidget {
                                         MainAxisAlignment.spaceBetween,
                                     children: [
                                       Container(),
-                                      Text("${product?.totalPrice}₺")
+                                      Text(
+                                        "${product?.totalPrice}₺",
+                                        style: TextStyle(
+                                            fontSize: 16,
+                                            fontWeight: FontWeight.bold),
+                                      )
                                     ],
                                   ),
                                 )
@@ -155,10 +178,6 @@ class CartScreen extends StatelessWidget {
                         );
                       }),
                     ),
-                    Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: AppButton(color: AppColors.blueLightCambridge, text: "Go To Checkout"),
-                    )
                   ],
                 ),
               );
