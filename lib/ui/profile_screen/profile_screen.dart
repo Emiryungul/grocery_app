@@ -33,6 +33,7 @@ class ProfileScreen extends StatelessWidget {
                         },child: Text(authController.token != null ? "Çıkıs Yap" : "Giris Yap",style: TextStyle(fontWeight: FontWeight.w200,color: Colors.black),)),
                         Icon(Icons.power_settings_new,color: Colors.red,)
                       ],
+
                     ),
                   ),
                 )
