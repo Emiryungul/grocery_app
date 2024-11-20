@@ -23,10 +23,12 @@ class AuthorizationController extends GetxController {
   var addressEmailController = TextEditingController();
   var passwordController = TextEditingController();
   var nameController = TextEditingController();
+
   final Rxn<userInfo.GetUserModel> _userInf =
   Rxn<userInfo.GetUserModel>();
 
   userInfo.GetUserModel? get userValue => _userInf.value;
+
   bool get isLoading => _isLoading.value;
 
   User? get user => _user.value;
