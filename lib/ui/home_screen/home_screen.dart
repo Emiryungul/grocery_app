@@ -127,24 +127,23 @@ class HomeScreen extends StatelessWidget {
                     SliverToBoxAdapter(
                       child: CarouselSlider(
                         options: CarouselOptions(
-                          height: 25.h,
+                          height: 25.h, // Keeps the height responsive
                           autoPlay: true,
-                          enlargeCenterPage: true,
+                          enlargeCenterPage: false, // Disable enlarging center page
                           aspectRatio: 16 / 9,
-                          autoPlayCurve: Curves.fastOutSlowIn,
+                          autoPlayCurve: Curves.easeInOut, // Use a smoother curve for sliding
                           enableInfiniteScroll: true,
-                          autoPlayAnimationDuration:
-                              const Duration(milliseconds: 1000),
-                          viewportFraction: 0.8,
+                          autoPlayAnimationDuration: const Duration(milliseconds: 2000), // Slower animation
+                          viewportFraction: 1.0, // Makes each slide fill the screen width
                         ),
                         items: imageList.map((imagePath) {
                           return Builder(
                             builder: (BuildContext context) {
                               return Container(
-                                width: 600,
-                                margin: const EdgeInsets.symmetric(horizontal: 5.0),
-                                decoration:
-                                    const BoxDecoration(color: AppColors.whiteAppColor),
+                                width: MediaQuery.of(context).size.width, // Full width of the screen
+                                decoration: const BoxDecoration(
+                                  color: AppColors.whiteAppColor, // Background color for container
+                                ),
                                 child: Image.asset(
                                   imagePath,
                                   //fit: BoxFit.cover,
@@ -155,6 +154,7 @@ class HomeScreen extends StatelessWidget {
                         }).toList(),
                       ),
                     ),
+
                     SliverToBoxAdapter(
                       child: SizedBox(
                         height: 4.h,
