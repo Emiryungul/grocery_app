@@ -49,7 +49,7 @@ class CategoriesController extends GetxController{
         final categoriesModel = categories.categoriesModelFromJson(responseBody);
         // Update the user and token in the controller
         _category.value = categoriesModel;
-        debugPrint(responseBody);
+        //debugPrint(responseBody);
 
         //print("*****************");
         //print(category?.toJson());
@@ -77,7 +77,7 @@ class CategoriesController extends GetxController{
         final productsModel = products.allProductsModelFromJson(responseBody);
         // Update the user and token in the controller
         _products.value = productsModel;
-        debugPrint(responseBody);
+        //debugPrint(responseBody);
 
         //print("*****************");
         //print(Products?.toJson());
@@ -103,7 +103,7 @@ class CategoriesController extends GetxController{
         final responseBody = response.body;
         final categoryProductsModel = category_products.productsByCategoryModelFromJson(responseBody);
         _categorysProducts.value = categoryProductsModel ;
-        debugPrint(responseBody);
+       // debugPrint(responseBody);
       } else {
         // Handle different status codes
         final error = HttpErrorHandler.handle(response.statusCode);

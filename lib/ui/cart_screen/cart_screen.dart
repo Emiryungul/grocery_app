@@ -21,6 +21,7 @@ class CartScreen extends StatelessWidget {
       return Scaffold(
           appBar: AppBar(
             centerTitle: true,
+            backgroundColor: AppColors.scaffoldBackgroundColor,
             title: Text(
               "My Cart",
               style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
@@ -28,7 +29,7 @@ class CartScreen extends StatelessWidget {
           ),
           bottomNavigationBar: BottomAppBar(
             color: AppColors.scaffoldBackgroundColor,
-            child: AppButton(color: AppColors.blueLightCambridge, text: "Go to Check out",textStyle: TextStyle(fontSize: 20,color: AppColors.whiteAppColor),),
+            child: AppButton(color: AppColors.blueLightCambridge, text: "Go to Check out" " ${cartController.cartValue?.meta?.totalPrice}\$",textStyle: TextStyle(fontSize: 20,color: AppColors.whiteAppColor),),
           ),
           body: GetBuilder<AuthorizationController>(builder: (controller) {
             if (controller.token == null) {
