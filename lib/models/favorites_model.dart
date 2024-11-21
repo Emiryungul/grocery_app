@@ -30,16 +30,16 @@ class FavoritesModel {
 
 class Favorite {
   int? id;
-  int? userId;
   int? productId;
+  int? userId;
   String? createdAt;
   String? updatedAt;
   Product? product;
 
   Favorite({
     this.id,
-    this.userId,
     this.productId,
+    this.userId,
     this.createdAt,
     this.updatedAt,
     this.product,
@@ -47,8 +47,8 @@ class Favorite {
 
   factory Favorite.fromJson(Map<String, dynamic> json) => Favorite(
     id: json["id"],
-    userId: json["user_id"],
     productId: json["product_id"],
+    userId: json["user_id"],
     createdAt: json["created_at"],
     updatedAt: json["updated_at"],
     product: json["product"] == null ? null : Product.fromJson(json["product"]),
@@ -56,8 +56,8 @@ class Favorite {
 
   Map<String, dynamic> toJson() => {
     "id": id,
-    "user_id": userId,
     "product_id": productId,
+    "user_id": userId,
     "created_at": createdAt,
     "updated_at": updatedAt,
     "product": product?.toJson(),
@@ -69,28 +69,20 @@ class Product {
   String? name;
   String? description;
   String? price;
-  String? imagePath;
-  int? categoryId;
-  dynamic createdAt;
-  dynamic updatedAt;
+  String? imageUrl;
   String? feature;
   String? expiration;
   String? energy;
-  String? imageUrl;
 
   Product({
     this.id,
     this.name,
     this.description,
     this.price,
-    this.imagePath,
-    this.categoryId,
-    this.createdAt,
-    this.updatedAt,
+    this.imageUrl,
     this.feature,
     this.expiration,
     this.energy,
-    this.imageUrl,
   });
 
   factory Product.fromJson(Map<String, dynamic> json) => Product(
@@ -98,14 +90,10 @@ class Product {
     name: json["name"],
     description: json["description"],
     price: json["price"],
-    imagePath: json["image_path"],
-    categoryId: json["category_id"],
-    createdAt: json["created_at"],
-    updatedAt: json["updated_at"],
+    imageUrl: json["image_url"],
     feature: json["feature"],
     expiration: json["expiration"],
     energy: json["energy"],
-    imageUrl: json["image_url"],
   );
 
   Map<String, dynamic> toJson() => {
@@ -113,13 +101,9 @@ class Product {
     "name": name,
     "description": description,
     "price": price,
-    "image_path": imagePath,
-    "category_id": categoryId,
-    "created_at": createdAt,
-    "updated_at": updatedAt,
+    "image_url": imageUrl,
     "feature": feature,
     "expiration": expiration,
     "energy": energy,
-    "image_url": imageUrl,
   };
 }

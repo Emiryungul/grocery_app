@@ -25,8 +25,8 @@ class FavoritesRepository {
     return response;
   }
 
-  Future<http.Response> addProductToCart() async {
-    final response = await apiService.postRequest(
+  Future<http.Response> fetchFavoriteItems() async {
+    final response = await apiService.getRequest(
         '/favorites',
         withAuth: true
     );

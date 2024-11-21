@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
+import 'package:grocery_app/controllers/FavoritesController.dart';
 import 'package:grocery_app/ui/cart_screen/cart_screen.dart';
+import 'package:grocery_app/ui/favorites_screen/favorites_screen.dart';
 import 'package:grocery_app/ui/home_screen/home_screen.dart';
 import 'package:grocery_app/ui/restaurants_screen/restaurants_screen.dart';
 
@@ -14,6 +16,7 @@ class NavbarScreen extends StatefulWidget {
   State<NavbarScreen> createState() => _NavbarScreenState();
 }
 final CartController cartController = Get.find<CartController>(); // Initialize your controller
+final FavoritesController favoritesController = Get.find<FavoritesController>(); // Again initialize
 
 class _NavbarScreenState extends State<NavbarScreen> {
   int _selectedIndex = 0;
@@ -22,6 +25,7 @@ class _NavbarScreenState extends State<NavbarScreen> {
     HomeScreen(),
     CartScreen(),
     RestaurantsScreen(),
+    FavoritesScreen(),
   ];
 
   final Map<int, Function> _itemActions = {
@@ -36,6 +40,10 @@ class _NavbarScreenState extends State<NavbarScreen> {
     2: () {
       // Perform an action for Restaurant
       print("Restaurant selected");
+    },
+    3: () {
+      favoritesController.fetchFavoriteItems();
+      print("Favorites selected");
     },
   };
 
@@ -74,6 +82,10 @@ class _NavbarScreenState extends State<NavbarScreen> {
           BottomNavigationBarItem(
             icon: Icon(Icons.restaurant),
             label: 'Restaurant',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.favorite_border),
+            label: 'Favorites',
           ),
         ],
       ),
