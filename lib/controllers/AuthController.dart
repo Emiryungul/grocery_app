@@ -1,12 +1,17 @@
+import 'dart:convert';
+
+import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:get/get_state_manager/src/simple/get_controllers.dart';
 import 'package:flutter/material.dart';
 import '../models/user_model.dart';
 import '../repositories/AuthRepository.dart';
+import '../routes/app_names.dart';
 import '../utils/http_error_handler.dart';
 import '../utils/token_storage.dart';
 import 'CartController.dart';
 import '../models/user_info_model.dart' as userInfo;
+import 'FavoritesController.dart';
 
 class AuthorizationController extends GetxController {
   final AuthorizationRepository authorizationRepository;
@@ -23,6 +28,7 @@ class AuthorizationController extends GetxController {
   var addressEmailController = TextEditingController();
   var passwordController = TextEditingController();
   var nameController = TextEditingController();
+  var confirmPasswordController = TextEditingController();
 
   final Rxn<userInfo.GetUserModel> _userInf =
   Rxn<userInfo.GetUserModel>();
@@ -42,6 +48,7 @@ class AuthorizationController extends GetxController {
     _checkAuthenticationStatus();
 
   }
+
   Future<void> authenticate() async {
     _isLoading.value = true;
     try {
@@ -72,6 +79,65 @@ class AuthorizationController extends GetxController {
       _isLoading.value = false;
     }
   }
+
+  Future<void> register() async {
+    _isLoading.value = true;
+    try {
+      final response = await authorizationRepository.register(
+        email: emailController.text,
+        password: passwordController.text,
+        name: nameController.text,
+        rePassword: confirmPasswordController.text
+      );
+      if (response.statusCode == 200 || response.statusCode == 201) {
+        // Parse the response body
+        final responseBody = response.body;
+        final encodedBody = jsonDecode(responseBody);
+        /*if (encodedBody["success"] == true) {
+          if (encodedBody['email_verify'] == true) {
+            showCupertinoDialog(
+              context: Get.context!,
+              builder: (BuildContext context) => CupertinoAlertDialog(
+                title: Text('Verification'),
+                content: Text(
+                    'Onaylama Linki Şu Adrese Yollanmıştır ${emailController.text}.'),
+                actions: <Widget>[
+                  CupertinoDialogAction(
+                    child: Text('OK'),
+                    onPressed: () {
+                      Navigator.of(context).pop();
+                      _isLoading.value = false;
+                    },
+                  ),
+                ],
+              ),
+            );
+            return;
+          }
+        }*/
+        final authorizationModel = userModelFromJson(responseBody);
+        // Update the user and token in the controller
+        _user.value = authorizationModel.user;
+        if (authorizationModel.token != null) {
+          await tokenStorage.saveToken(authorizationModel.token!);
+          _token.value = authorizationModel.token;
+          debugPrint("TOKEN: ${_token.value}");
+          Get.offAllNamed(AppRoutes.navBarScreen);
+          Get.snackbar('Kayıt Oldunuz !', 'Başarılı Bir Şekilde Kayıt oldunuz!');
+        }
+      } else {
+        // Handle different status codes
+        final error = HttpErrorHandler.handle(response.statusCode);
+        //Get.snackbar('Error', error);
+      }
+    } catch (e) {
+      Get.snackbar('Error', 'register ${e}');
+    } finally {
+      update();
+      _isLoading.value = false;
+    }
+  }
+
   Future<void> getUser() async {
     _isLoading.value = true;
     try {
@@ -82,15 +148,15 @@ class AuthorizationController extends GetxController {
         final authorizationModel = userInfo.getUserModelFromJson(responseBody);
         // Update the user in the controller
         _userInf.value = authorizationModel;
-        print(_user.value?.name);
-        print(_user.value?.email);
+        //print(_user.value?.name);
+        //print(_user.value?.email);
       } else {
         // Handle different status codes
         final error = HttpErrorHandler.handle(response.statusCode);
-        Get.snackbar('Error', error);
+        //Get.snackbar('Error', error);
       }
     } catch (e) {
-      Get.snackbar('Error', '${e}');
+      //Get.snackbar('Error', '${e}');
     } finally {
       update();
       _isLoading.value = false;
@@ -112,12 +178,14 @@ class AuthorizationController extends GetxController {
       _token.value = token;
     }
   }
+
   void _redirectBasedOnAuthStatus(dynamic _) async{
     if (_token.value != null) {
       // User is authenticated
       debugPrint("Redirecting");
       print(_token.value);
       Get.find<CartController>().fetchCartItems();
+      Get.find<FavoritesController>().fetchFavoriteItems();
       getUser();
     } else {
       // User is not authenticated

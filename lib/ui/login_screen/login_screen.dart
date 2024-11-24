@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get/get_common/get_reset.dart';
+import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_state_manager/src/simple/get_state.dart';
+import 'package:grocery_app/routes/app_names.dart';
 import 'package:sizer/sizer.dart';
 
 import '../../controllers/AuthController.dart';
@@ -120,7 +124,6 @@ class _LoginScreenState extends State<LoginScreen> {
                         onTap: () {
                           if (_formKey.currentState!.validate()) {
                             controller.authenticate();
-
                             // Clear the text fields after authentication
                             controller.emailController.clear();
                             controller.passwordController.clear();
@@ -128,7 +131,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         },
                         child: AppButton(
                             color: AppColors.turquoiseColor,
-                            text: "Giriş Yapın"
+                            text: "Login"
                         ),
                       ),
                     ),
@@ -137,16 +140,11 @@ class _LoginScreenState extends State<LoginScreen> {
                       padding: const EdgeInsets.only(left: 15,right: 15),
                       child: InkWell(
                         onTap: () {
-                          if (_formKey.currentState!.validate()) {
-                            controller.authenticate();
-                            // Clear the text fields after authentication
-                            controller.emailController.clear();
-                            controller.passwordController.clear();
-                          }
+                          Get.toNamed(AppRoutes.registerScreen);
                         },
                         child: AppButton(
                             color: AppColors.turquoiseColor,
-                            text: "Giriş Yapın"
+                            text: "Register"
                         ),
                       ),
                     ),

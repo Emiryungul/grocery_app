@@ -154,7 +154,6 @@ class HomeScreen extends StatelessWidget {
                         }).toList(),
                       ),
                     ),
-
                     SliverToBoxAdapter(
                       child: SizedBox(
                         height: 4.h,

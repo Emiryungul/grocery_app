@@ -7,4 +7,5 @@ abstract class AppRoutes {
   static const profileScreen = '/profileScreen';
   static const home = '/home';
   static const restaurantScreen = '/restaurantScreen';
+  static const registerScreen = '/registerScreen';
 }

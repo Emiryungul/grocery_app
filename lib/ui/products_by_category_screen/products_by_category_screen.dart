@@ -43,8 +43,10 @@ class ProductsByCategoryScreen extends StatelessWidget {
                                 Get.toNamed(AppRoutes.loginScreen);
                               },
                               child: AppButton(
-                                  color: AppColors.greenLime,
-                                  text: "Login"),
+                                  color: AppColors.blueLightCambridge,
+                                  text: "Login",
+                                  textStyle: TextStyle(color: AppColors.whiteAppColor),
+                              ),
                             )
                           ],
                         ),

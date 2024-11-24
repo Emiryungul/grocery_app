@@ -65,16 +65,16 @@ class CartController extends GetxController{
         final cartModel = cart.cartModelFromJson(responseBody);
         // Update the user and token in the controller
         _cart.value = cartModel;
-        debugPrint(responseBody);
-        print("*****************");
-        print(cartValue?.toJson());
+        //debugPrint(responseBody);
+        //print("*****************");
+        //print(cartValue?.toJson());
       } else {
         // Handle different status codes
         final error = HttpErrorHandler.handle(response.statusCode);
-        Get.snackbar('Error', error);
+        //Get.snackbar('Error', error);
       }
     } catch (e) {
-      Get.snackbar('Error', "$e");
+      //Get.snackbar('Error', "$e");
       print("$e");
     } finally {
       _isLoading.value = false;

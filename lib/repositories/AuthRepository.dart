@@ -24,6 +24,27 @@ class AuthorizationRepository {
     return response;
   }
 
+  Future<http.Response> register(
+      {
+        required String email,
+        required String password,
+        required String name,
+        required String rePassword}) async {
+    final body = {
+      'name': name,
+      'email': email,
+      'password': password,
+      'password_confirmation' :rePassword
+    };
+    debugPrint(body.toString());
+    final response = await apiService.postRequest(
+      '/register',
+      body: body,
+    );
+    debugPrint(response.body.toString());
+    return response;
+  }
+
   Future<http.Response> user() async {
     final response = await apiService.getRequest('/user', withAuth: true);
 
