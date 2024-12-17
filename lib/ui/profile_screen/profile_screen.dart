@@ -108,8 +108,7 @@ class ProfileScreen extends StatelessWidget {
                         Get.toNamed(AppRoutes.loginScreen);
                       }
                       else{
-                        //categoryController.fetchReservationHistory();
-                        //Get.toNamed(AppRoutes.orderHistory);
+                        Get.toNamed(AppRoutes.addressesScreen);
                       }
                     },
                   ),
@@ -147,7 +146,7 @@ class ProfileScreen extends StatelessWidget {
                             authController.logOut();
                           }
                           else{
-                            Get.offAllNamed(AppRoutes.loginScreen);
+                            Get.toNamed(AppRoutes.loginScreen);
                           }
                         },child: Text(authController.token != null ? "Çıkıs Yap" : "Giris Yap",style: TextStyle(fontWeight: FontWeight.w200,color: Colors.black),)),
                         Icon(Icons.power_settings_new,color: Colors.red,)

@@ -47,6 +47,12 @@ class _RegisterScreenState extends State<RegisterScreen> {
         }
 
         return Scaffold(
+          appBar: AppBar(
+            backgroundColor: AppColors.turquoiseColor,
+            elevation: 1,
+            centerTitle: true ,
+            title: Text("Register"),
+          ),
           body: Container(
             decoration: const BoxDecoration(
               gradient: LinearGradient(
