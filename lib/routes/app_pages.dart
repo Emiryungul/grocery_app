@@ -54,7 +54,7 @@ class AppPages {
     ),
     GetPage(
       name: AppRoutes.addressesScreen,
-      page: () =>  AddressesScreen(),
+      page: () =>  AddAddressScreen(),
     ),
     ];
 }

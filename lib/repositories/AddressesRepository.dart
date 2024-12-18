@@ -7,36 +7,5 @@ class AddressesRepository {
 
   AddressesRepository({required this.apiService});
 
-  Future<http.Response> addAddress(
-      {required String name,
-      required String address,
-      required String marker,
-      required double latitude,
-      required double longitude,
-      required String postCode}) async {
-    final body = {
-      'name': name,
-      'address': address,
-      'marker': marker,
-      'lat': latitude,
-      'lon': longitude,
-      'post_code': postCode
-    };
 
-    debugPrint(body.toString());
-    final response =
-        await apiService.postRequest('/addresses', body: body, withAuth: true);
-    debugPrint(response.body);
-    return response;
-  }
-
-  Future<http.Response> fetchAddresses() async {
-    final response = await apiService.getRequest(
-        '/addresses',
-        withAuth: true
-    );
-    debugPrint(response.body);
-    print(response.body);
-    return response;
-  }
 }
