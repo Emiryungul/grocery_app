@@ -31,12 +31,7 @@ class AuthorizationController extends GetxController {
   var passwordController = TextEditingController();
   var nameController = TextEditingController();
   var confirmPasswordController = TextEditingController();
-  var addressNameController = TextEditingController();
-  var addressInfoController = TextEditingController();
-  var addressMarkerController = TextEditingController();
-  var latitudeController = TextEditingController();
-  var longitudeController = TextEditingController();
-  var postCodeController = TextEditingController();
+
 
   final Rxn<userInfo.GetUserModel> _userInf =
   Rxn<userInfo.GetUserModel>();
@@ -150,60 +145,6 @@ class AuthorizationController extends GetxController {
       }
     } catch (e) {
       Get.snackbar('Error', 'register ${e}');
-    } finally {
-      update();
-      _isLoading.value = false;
-    }
-  }
-
-  Future<void> newAddress() async {
-    _isLoading.value = true;
-    try {
-      update();
-      final response = await authorizationRepository.addAddress(
-          name: nameController.text,
-          address: addressInfoController.text,
-          marker: addressMarkerController.text,
-          latitude: double.parse(latitudeController.text),
-          longitude: double.parse(longitudeController.text),
-          postCode: postCodeController.text);
-      if (response.statusCode == 200) {
-        // Parse the response body
-        final responseBody = response.body;
-        final addAddressModel = address.addUserAddressModelFromJson(responseBody);
-        _address.value = addAddressModel;
-        debugPrint(responseBody);
-      } else {
-        // Handle different status codes
-        final error = HttpErrorHandler.handle(response.statusCode);
-        Get.snackbar('Error', error);
-      }
-    } catch (e) {
-      Get.snackbar('Error', 'new address ${e}');
-    } finally {
-      update();
-      _isLoading.value = false;
-    }
-  }
-
-  Future<void> fetchAddresses() async {
-    _isLoading.value = true;
-    try {
-      update();
-      final response = await authorizationRepository.fetchAddresses();
-      if (response.statusCode == 200) {
-        // Parse the response body
-        final responseBody = response.body;
-        final showUserAddresses = user_addresses.showUserAddressesModelFromJson(responseBody);
-        _userAddresses.value = showUserAddresses;
-        debugPrint(responseBody);
-      } else {
-        // Handle different status codes
-        final error = HttpErrorHandler.handle(response.statusCode);
-        Get.snackbar('Error', error);
-      }
-    } catch (e) {
-      Get.snackbar('Error', 'new address ${e}');
     } finally {
       update();
       _isLoading.value = false;

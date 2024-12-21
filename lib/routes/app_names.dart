@@ -8,5 +8,6 @@ abstract class AppRoutes {
   static const home = '/home';
   static const restaurantScreen = '/restaurantScreen';
   static const registerScreen = '/registerScreen';
+  static const addAddressesScreen = '/addAddressesScreen';
   static const addressesScreen = '/addressesScreen';
 }

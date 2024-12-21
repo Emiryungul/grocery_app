@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_state_manager/src/simple/get_state.dart';
+import 'package:grocery_app/controllers/AddressesController.dart';
 import 'package:grocery_app/controllers/AuthController.dart';
 
 import '../../routes/app_names.dart';
@@ -94,23 +95,28 @@ class ProfileScreen extends StatelessWidget {
                 ),
                 Padding(
                   padding:  EdgeInsets.only(right: 8,left: 8,top: 15),
-                  child: ProfileSettingWidget(
-                    ContainerColor: AppColors.green,
-                    icon: Icons.location_on,
-                    IconColor: AppColors.whiteAppColor,
-                    text: "Addresses",
-                    textStyle: TextStyle(
-                        fontWeight: FontWeight.w500,
-                        fontSize: 15,
-                        color: AppColors.whiteAppColor),
-                    func: () {
-                      if(authController.token == null){
-                        Get.toNamed(AppRoutes.loginScreen);
-                      }
-                      else{
-                        Get.toNamed(AppRoutes.addressesScreen);
-                      }
-                    },
+                  child: GetBuilder<AddressesController>(
+                    builder: (controller) {
+                      return ProfileSettingWidget(
+                        ContainerColor: AppColors.green,
+                        icon: Icons.location_on,
+                        IconColor: AppColors.whiteAppColor,
+                        text: "Addresses",
+                        textStyle: TextStyle(
+                            fontWeight: FontWeight.w500,
+                            fontSize: 15,
+                            color: AppColors.whiteAppColor),
+                        func: () {
+                          if(authController.token == null){
+                            Get.toNamed(AppRoutes.loginScreen);
+                          }
+                          else{
+                            controller.fetchAddresses();
+                            Get.toNamed(AppRoutes.addressesScreen);
+                          }
+                        },
+                      );
+                    }
                   ),
                 ),
                 Padding(

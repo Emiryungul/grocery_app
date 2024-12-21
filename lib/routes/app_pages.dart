@@ -7,8 +7,7 @@ import 'package:grocery_app/ui/product_detail_screen/product_detail_screen.dart'
 import 'package:grocery_app/ui/products_by_category_screen/products_by_category_screen.dart';
 import 'package:grocery_app/ui/register_screen/register_screen.dart';
 import 'package:grocery_app/ui/restaurants_screen/restaurants_screen.dart';
-
-
+import '../ui/add_address_screen/add_address_screen.dart';
 import '../ui/cart_screen/cart_screen.dart';
 import '../ui/login_screen/login_screen.dart';
 import '../ui/profile_screen/profile_screen.dart';
@@ -53,8 +52,12 @@ class AppPages {
       page: () =>  RegisterScreen(),
     ),
     GetPage(
-      name: AppRoutes.addressesScreen,
+      name: AppRoutes.addAddressesScreen,
       page: () =>  AddAddressScreen(),
+    ),
+    GetPage(
+      name: AppRoutes.addressesScreen,
+      page: () =>  AddressesScreen(),
     ),
     ];
 }
