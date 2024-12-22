@@ -67,7 +67,7 @@ class AddressesController extends GetxController {
       } else {
         // Handle different status codes
         final error = HttpErrorHandler.handle(response.statusCode);
-        Get.snackbar('Error', error);
+        Get.snackbar('Error', 'deneme');
       }
     } catch (e) {
       Get.snackbar('Error', 'new address ${e}');

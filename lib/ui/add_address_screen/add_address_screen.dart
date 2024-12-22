@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:grocery_app/controllers/AddressesController.dart';
+import 'package:grocery_app/routes/app_names.dart';
 import 'package:sizer/sizer.dart';
 
 import '../../controllers/GoogleMapsController.dart';
@@ -28,6 +29,11 @@ class _AddAddressScreenState extends State<AddAddressScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: Text("Add Address"),
+        centerTitle: true,
+        backgroundColor: AppColors.blueLightCambridge,
+      ),
       body: GetBuilder<AddressController>(
         builder: (_) {
           return GetBuilder<AuthorizationController>(
@@ -168,7 +174,8 @@ class _AddAddressScreenState extends State<AddAddressScreen> {
                                       controller.addressInfoController.clear();
                                       controller.addressMarkerController.clear();
                                       controller.addressNameController.clear();
-                                      Get.back();
+                                      controller.fetchAddresses();
+                                      Get.toNamed(AppRoutes.navBarScreen);
                                       }
                                         },
                                         child: Container(
@@ -198,7 +205,7 @@ class _AddAddressScreenState extends State<AddAddressScreen> {
                                               ),
                                             )
                                                 : Text(
-                                              "Adres Ekleyiniz",
+                                              "Add Address",
                                               style: TextStyle(
                                                 fontSize: 16,
                                                 fontWeight: FontWeight.w500,
