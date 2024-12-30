@@ -39,4 +39,15 @@ class AddressesRepository {
     print(response.body);
     return response;
   }
+
+  Future<http.Response> deleteAddress(String id) async {
+    final response = await apiService.deleteRequest(
+        '/addresses/$id',
+        withAuth: true
+    );
+    debugPrint(response.body);
+    print(response.body);
+    return response;
+  }
+
 }

@@ -10,7 +10,7 @@ String showUserAddressesModelToJson(ShowUserAddressesModel data) => json.encode(
 
 class ShowUserAddressesModel {
   String? message;
-  List<Address>? addresses;
+  List<Addresss>? addresses;
 
   ShowUserAddressesModel({
     this.message,
@@ -19,7 +19,7 @@ class ShowUserAddressesModel {
 
   factory ShowUserAddressesModel.fromJson(Map<String, dynamic> json) => ShowUserAddressesModel(
     message: json["message"],
-    addresses: json["addresses"] == null ? [] : List<Address>.from(json["addresses"]!.map((x) => Address.fromJson(x))),
+    addresses: json["addresses"] == null ? [] : List<Addresss>.from(json["addresses"]!.map((x) => Addresss.fromJson(x))),
   );
 
   Map<String, dynamic> toJson() => {
@@ -28,7 +28,7 @@ class ShowUserAddressesModel {
   };
 }
 
-class Address {
+class Addresss {
   int? id;
   int? userId;
   String? marker;
@@ -40,7 +40,7 @@ class Address {
   String? createdAt;
   String? updatedAt;
 
-  Address({
+  Addresss({
     this.id,
     this.userId,
     this.marker,
@@ -53,7 +53,7 @@ class Address {
     this.updatedAt,
   });
 
-  factory Address.fromJson(Map<String, dynamic> json) => Address(
+  factory Addresss.fromJson(Map<String, dynamic> json) => Addresss(
     id: json["id"],
     userId: json["user_id"],
     marker: json["marker"],

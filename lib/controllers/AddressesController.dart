@@ -4,6 +4,7 @@ import 'package:get/get_state_manager/src/simple/get_controllers.dart';
 import 'package:grocery_app/repositories/AddressesRepository.dart';
 import '../models/add_user_address_model.dart' as address ;
 import '../models/show_user_addresses_model.dart' as user_addresses;
+import '../models/show_user_addresses_model.dart';
 import '../models/user_model.dart';
 import '../utils/http_error_handler.dart';
 import '../utils/token_storage.dart';
@@ -40,6 +41,14 @@ class AddressesController extends GetxController {
   Rxn<user_addresses.ShowUserAddressesModel>();
 
   user_addresses.ShowUserAddressesModel? get userAddress => _userAddresses.value;
+
+  final Rxn<Addresss?> selectedAddress = Rxn<Addresss>();
+
+  // A method to update the selected feature
+  void updateSelectedAddress(Addresss? address) {
+    selectedAddress.value = address;
+    update();
+  }
 
   @override
   void onInit(){
@@ -82,6 +91,30 @@ class AddressesController extends GetxController {
     try {
       update();
       final response = await addressesRepository.fetchAddresses();
+      if (response.statusCode == 200) {
+        // Parse the response body
+        final responseBody = response.body;
+        final showUserAddresses = user_addresses.showUserAddressesModelFromJson(responseBody);
+        _userAddresses.value = showUserAddresses;
+        debugPrint(responseBody);
+      } else {
+        // Handle different status codes
+        final error = HttpErrorHandler.handle(response.statusCode);
+        Get.snackbar('Error', error);
+      }
+    } catch (e) {
+      Get.snackbar('Error', 'new address ${e}');
+    } finally {
+      update();
+      _isLoading.value = false;
+    }
+  }
+
+  Future<void> deleteAddress(String id) async {
+    _isLoading.value = true;
+    try {
+      update();
+      final response = await addressesRepository.deleteAddress(id);
       if (response.statusCode == 200) {
         // Parse the response body
         final responseBody = response.body;

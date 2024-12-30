@@ -10,4 +10,5 @@ abstract class AppRoutes {
   static const registerScreen = '/registerScreen';
   static const addAddressesScreen = '/addAddressesScreen';
   static const addressesScreen = '/addressesScreen';
+  static const checkOutScreen = '/checkoutScreen';
 }
