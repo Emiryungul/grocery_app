@@ -39,9 +39,7 @@ class AddressesScreen extends StatelessWidget {
           return Column(
               children: List.generate(
                   controller.userAddress?.addresses?.length ?? 0, (index) {
-
             var product = controller.userAddress?.addresses?[index];
-
             return Padding(
               padding: const EdgeInsets.all(5.0),
               child: InkWell(

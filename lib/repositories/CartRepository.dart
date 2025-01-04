@@ -34,5 +34,22 @@ class CartRepository {
     return response;
   }
 
+  Future<http.Response> payForTheCart({
+    required String addressId,
+  }) async {
+    final body = {
+      'address_id': addressId,
+    };
+    debugPrint(body.toString());
+    final response = await apiService.postRequest(
+        '/cart/pay',
+        body: body,
+        withAuth: true
+
+    );
+    debugPrint(response.body);
+    return response;
+  }
+
 
 }

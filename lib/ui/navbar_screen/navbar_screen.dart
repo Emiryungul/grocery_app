@@ -24,7 +24,7 @@ class _NavbarScreenState extends State<NavbarScreen> {
   final List<Widget> _pages = [
     HomeScreen(),
     CartScreen(),
-    RestaurantsScreen(),
+    //RestaurantsScreen(),
     FavoritesScreen(),
   ];
 
@@ -79,10 +79,10 @@ class _NavbarScreenState extends State<NavbarScreen> {
             icon: Icon(Icons.shopping_cart),
             label: 'Cart',
           ),
-          BottomNavigationBarItem(
+          /*BottomNavigationBarItem(
             icon: Icon(Icons.restaurant),
             label: 'Restaurant',
-          ),
+          ),*/
           BottomNavigationBarItem(
             icon: Icon(Icons.favorite_border),
             label: 'Favorites',
