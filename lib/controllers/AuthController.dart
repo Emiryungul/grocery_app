@@ -79,15 +79,15 @@ class AuthorizationController extends GetxController {
             _token.value = authorizationModel.token;
             debugPrint("TOKEN: ${_token.value}");
             Get.back();
-            Get.snackbar('Başarılı', "${_user.value?.email}"' Hesabınıza Giriş Yaptınız');
+            Get.snackbar('Success', "${_user.value?.email}"' Logged in successfully');
           }
       } else {
         // Handle different status codes
         final error = HttpErrorHandler.handle(response.statusCode);
-        Get.snackbar('Dikkat !', "Bu Bilgiler Sistemimizde Bulunmamakta");
+        Get.snackbar('Warning !', "This Information Is Not Available In Our System");
       }
     } catch (e) {
-      Get.snackbar('Hata', 'Lütfen bilgilerinizi kontrol ediniz');
+      //Get.snackbar('', 'Lütfen bilgilerinizi kontrol ediniz');
     } finally {
       _isLoading.value = false;
     }
@@ -136,7 +136,7 @@ class AuthorizationController extends GetxController {
           _token.value = authorizationModel.token;
           debugPrint("TOKEN: ${_token.value}");
           Get.offAllNamed(AppRoutes.navBarScreen);
-          Get.snackbar('Kayıt Oldunuz !', 'Başarılı Bir Şekilde Kayıt oldunuz!');
+          Get.snackbar('You Have Registered !', 'You have successfully registered!');
         }
       } else {
         // Handle different status codes
@@ -180,7 +180,7 @@ class AuthorizationController extends GetxController {
     await tokenStorage.deleteToken();
     _token.value = null;
     _user.value = null;
-    Get.snackbar('Çıkış', 'Hesaptan Çıkış Yapıldı');
+    Get.snackbar('LoggedOut', 'You have Logged out from this Account');
     update();
   }
 

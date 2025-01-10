@@ -34,17 +34,26 @@ class CartScreen extends StatelessWidget {
               },
               child: BottomAppBar(
                 color: AppColors.scaffoldBackgroundColor,
-                child: AppButton(
-                  color: controller.token== null
-                      ? AppColors.scaffoldBackgroundColor
-                      : AppColors.blueLightCambridge,
-                  text: controller.token == null
-                      ? "Guest"
-                      : "Go to Checkout ${cartController.cartValue?.meta?.totalPrice}\$",
-                  textStyle:
-                      TextStyle(fontSize: 20, color: AppColors.blackAppColor),
-                ),
+                child: Container(
+                  width: 90.w,
+                  height: 10.h,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(20),
+                    color: controller.token == null
+                        ? AppColors.scaffoldBackgroundColor
+                        : AppColors.blueLightCambridge,
+
+                  ),
+                  child: Center(
+                    child: Text(
+                      controller.token != null
+                          ? "Go to Checkout ${cartController.cartValue?.meta?.totalPrice}\$"
+                      : "",
+                    style: TextStyle(fontSize: 20, color: AppColors.blackAppColor),),
+                  ),
+                )
               ),
+
             ),
             body: GetBuilder<AuthorizationController>(builder: (controller) {
               if (controller.token == null) {

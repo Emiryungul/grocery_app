@@ -71,7 +71,7 @@ class ProfileScreen extends StatelessWidget {
                     ],
                   ),
                 ),
-                Padding(
+                /*Padding(
                   padding:  EdgeInsets.only(right: 8,left: 8,top: 20),
                   child: ProfileSettingWidget(
                     ContainerColor: AppColors.green,
@@ -92,7 +92,7 @@ class ProfileScreen extends StatelessWidget {
                       }
                     },
                   ),
-                ),
+                ),*/
                 Padding(
                   padding:  EdgeInsets.only(right: 8,left: 8,top: 15),
                   child: GetBuilder<AddressesController>(

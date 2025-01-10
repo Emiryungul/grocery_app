@@ -6,6 +6,7 @@ import 'package:get/get_state_manager/src/simple/get_state.dart';
 import 'package:grocery_app/controllers/AddressesController.dart';
 import 'package:grocery_app/controllers/CartController.dart';
 import 'package:grocery_app/main.dart';
+import 'package:grocery_app/routes/app_names.dart';
 import 'package:grocery_app/ui/widgets/appbutton_widget.dart';
 import 'package:sizer/sizer.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -68,6 +69,9 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
                               addressId:
                                   "${addressController.selectedAddress.value?.id}",
                             );
+                            Get.snackbar("Your order has been made",
+                                "Your order has been made");
+                            Get.offAllNamed(AppRoutes.navBarScreen);
                           }
                         },
                   child: Container(
@@ -113,17 +117,22 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
                               fontWeight: FontWeight.bold, fontSize: 15),
                         ),
                       ),
-                      Container(
-                        width: 30.w,
-                        height: 6.h,
-                        decoration: BoxDecoration(
-                            color: AppColors.blueTiffany,
-                            borderRadius: BorderRadius.circular(35)),
-                        child: Center(
-                            child: Text(
-                          "Add Address",
-                          style: TextStyle(fontWeight: FontWeight.bold),
-                        )),
+                      InkWell(
+                        onTap: (){
+                          Get.toNamed(AppRoutes.addAddressesScreen);
+                        },
+                        child: Container(
+                          width: 30.w,
+                          height: 6.h,
+                          decoration: BoxDecoration(
+                              color: AppColors.blueTiffany,
+                              borderRadius: BorderRadius.circular(35)),
+                          child: Center(
+                              child: Text(
+                            "Add Address",
+                            style: TextStyle(fontWeight: FontWeight.bold),
+                          )),
+                        ),
                       ),
                     ],
                   ),

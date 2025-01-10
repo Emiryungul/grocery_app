@@ -170,7 +170,7 @@ class HomeScreen extends StatelessWidget {
                                     color: AppColors.blackAppColor,
                                     fontWeight: FontWeight.w500,
                                     fontSize: 20)),
-                            Text("SeeAll",
+                            Text("",
                                 style: TextStyle(
                                     color: Colors.blue,
                                     fontWeight: FontWeight.w500,
@@ -246,7 +246,7 @@ class HomeScreen extends StatelessWidget {
                                     color: AppColors.blackAppColor,
                                     fontWeight: FontWeight.w500,
                                     fontSize: 20)),
-                            Text("SeeAll",
+                            Text("",
                                 style: TextStyle(
                                     color: Colors.blue,
                                     fontWeight: FontWeight.w500,
@@ -312,7 +312,7 @@ class HomeScreen extends StatelessWidget {
                                                 color: AppColors.redColor),
                                           ),
                                         ),
-                                        Row(
+                                        /*Row(
                                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                           children: [
                                             Container(),
@@ -330,7 +330,7 @@ class HomeScreen extends StatelessWidget {
                                             ),
 
                                           ],
-                                        )
+                                        )*/
                                       ],
                                     )),
                               ));

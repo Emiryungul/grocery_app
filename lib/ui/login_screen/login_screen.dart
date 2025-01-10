@@ -64,7 +64,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     ),
                     Padding(
                       padding: const EdgeInsets.only(bottom: 70,),
-                      child: Text("GastroHub Your Restaurant and Food bringer !!",style: TextStyle(fontWeight: FontWeight.w400,fontSize: 15),),
+                      child: Text("GastroHub We Bring To Your Door !!",style: TextStyle(fontWeight: FontWeight.w400,fontSize: 15),),
                     ),
                     Padding(
                       padding: const EdgeInsets.only(right: 25,left: 25),
@@ -136,6 +136,8 @@ class _LoginScreenState extends State<LoginScreen> {
                       ),
                     ),
                     SizedBox(height: 20,),
+                    Padding(padding: EdgeInsets.only(left: 15,right: 15),
+                    child: Text("if you dont have any account then ")),
                     Padding(
                       padding: const EdgeInsets.only(left: 15,right: 15),
                       child: InkWell(
