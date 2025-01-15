@@ -71,7 +71,7 @@ class ProfileScreen extends StatelessWidget {
                     ],
                   ),
                 ),
-                /*Padding(
+                Padding(
                   padding:  EdgeInsets.only(right: 8,left: 8,top: 20),
                   child: ProfileSettingWidget(
                     ContainerColor: AppColors.green,
@@ -92,7 +92,7 @@ class ProfileScreen extends StatelessWidget {
                       }
                     },
                   ),
-                ),*/
+                ),
                 Padding(
                   padding:  EdgeInsets.only(right: 8,left: 8,top: 15),
                   child: GetBuilder<AddressesController>(
@@ -154,7 +154,7 @@ class ProfileScreen extends StatelessWidget {
                           else{
                             Get.toNamed(AppRoutes.loginScreen);
                           }
-                        },child: Text(authController.token != null ? "Çıkıs Yap" : "Giris Yap",style: TextStyle(fontWeight: FontWeight.w200,color: Colors.black),)),
+                        },child: Text(authController.token != null ? "LogOut" : "LogIn",style: TextStyle(fontWeight: FontWeight.w200,color: Colors.black),)),
                         Icon(Icons.power_settings_new,color: Colors.red,)
                       ],
                     ),

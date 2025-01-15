@@ -24,7 +24,6 @@ class _NavbarScreenState extends State<NavbarScreen> {
   final List<Widget> _pages = [
     HomeScreen(),
     CartScreen(),
-    //RestaurantsScreen(),
     FavoritesScreen(),
   ];
 
@@ -38,10 +37,6 @@ class _NavbarScreenState extends State<NavbarScreen> {
       print("Cart selected");
     },
     2: () {
-      // Perform an action for Restaurant
-      print("Restaurant selected");
-    },
-    3: () {
       favoritesController.fetchFavoriteItems();
       print("Favorites selected");
     },

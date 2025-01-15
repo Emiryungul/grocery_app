@@ -134,7 +134,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                   });
                                 },
                               ),
-                              labelText: 'Şifre',
+                              labelText: 'password',
                               labelStyle: TextStyle(fontWeight: FontWeight.w400),
                               //hintText: 'Şifre',
                               border: OutlineInputBorder()),
@@ -167,7 +167,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                   });
                                 },
                               ),
-                              labelText: 'Şifre',
+                              labelText: 'rePassword',
                               labelStyle: TextStyle(fontWeight: FontWeight.w400),
                               //hintText: 'Şifre',
                               border: OutlineInputBorder()),

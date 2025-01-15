@@ -93,6 +93,34 @@ class CartController extends GetxController{
     }
   }
 
+  Future<void> deleteCartItem({required String cartId}) async {
+    _isLoading.value = true;
+    try {
+      final response = await cartRepository.deleteCartItem(cartId);
+      if (response.statusCode == 200 || response.statusCode == 201) {
+        // Parse the response body
+        final responseBody = response.body;
+        final cartModel = pay.payForCartModelFromJson(responseBody);
+        // Update the user and token in the controller
+        _pay.value = cartModel;
+        debugPrint(responseBody);
+
+        // Show a bottom snack bar
+
+      } else {
+        // Handle different status codes
+        final error = HttpErrorHandler.handle(response.statusCode);
+        Get.snackbar('Error', error);
+      }
+    } catch (e) {
+      //Get.snackbar('Error', "$e");
+      print("$e");
+    } finally {
+      _isLoading.value = false;
+      update();
+    }
+  }
+
 
   Future<void> fetchCartItems() async {
     _isLoading.value = true;

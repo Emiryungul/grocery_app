@@ -74,8 +74,8 @@ class _AddAddressScreenState extends State<AddAddressScreen> {
                       child: Column(
                         children: [
                           Text(
-                            'Haritaya dokunarak enlem ve boylam otomatik doldurulacaktır.',
-                            style: TextStyle(fontSize: 10.sp),
+                            'By Clicking the map you can choose your map location.',
+                            style: TextStyle(fontSize: 12.sp),
                           ),
                           SizedBox(height: 2.h),
                           Form(
@@ -86,7 +86,7 @@ class _AddAddressScreenState extends State<AddAddressScreen> {
                                   controller: addressesController.addressMarkerController,
                                   decoration: InputDecoration(
                                     prefixIcon: Icon(Icons.location_pin, color: Colors.grey),
-                                    hintText: 'Adres Adı',
+                                    hintText: 'Address Marker ',
                                     labelStyle: TextStyle(
                                       fontWeight: FontWeight.w400,
                                       color: Colors.black54,
@@ -105,7 +105,7 @@ class _AddAddressScreenState extends State<AddAddressScreen> {
                                   controller: addressesController.postCodeController,
                                   decoration: InputDecoration(
                                     prefixIcon: Icon(Icons.local_post_office, color: Colors.grey),
-                                    hintText: 'Posta Kodu',
+                                    hintText: 'Post Code',
                                     labelStyle: TextStyle(
                                       fontWeight: FontWeight.w400,
                                       color: Colors.black54,
@@ -127,7 +127,7 @@ class _AddAddressScreenState extends State<AddAddressScreen> {
                                         controller: addressesController.addressNameController,
                                         decoration: InputDecoration(
                                           prefixIcon: Icon(Icons.person, color: Colors.grey),
-                                          hintText: 'İsim',
+                                          hintText: 'Address',
                                           labelStyle: TextStyle(
                                             fontWeight: FontWeight.w400,
                                             color: Colors.black54,
@@ -149,7 +149,7 @@ class _AddAddressScreenState extends State<AddAddressScreen> {
                                   controller: addressesController.addressInfoController,
                                   decoration: InputDecoration(
                                     prefixIcon: Icon(Icons.home, color: Colors.grey),
-                                    hintText: 'Adres Bilginiz',
+                                    hintText: 'Address Information',
                                     labelStyle: TextStyle(
                                       fontWeight: FontWeight.w400,
                                       color: Colors.black54,
@@ -175,7 +175,7 @@ class _AddAddressScreenState extends State<AddAddressScreen> {
                                       controller.addressMarkerController.clear();
                                       controller.addressNameController.clear();
                                       controller.fetchAddresses();
-                                      Get.toNamed(AppRoutes.navBarScreen);
+                                      Get.back();
                                       }
                                         },
                                         child: Container(

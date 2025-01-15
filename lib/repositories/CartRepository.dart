@@ -17,6 +17,16 @@ class CartRepository {
     return response;
   }
 
+  Future<http.Response> deleteCartItem(String id) async {
+    final response = await apiService.deleteRequest(
+        '/cart/$id',
+        withAuth: true
+    );
+    debugPrint(response.body);
+    print(response.body);
+    return response;
+  }
+
   Future<http.Response> addProductToCart({
     required String productId,
   }) async {
