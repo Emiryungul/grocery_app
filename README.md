@@ -122,7 +122,8 @@ Ensure your Laravel API provides these endpoints:
   - `POST /api/cart`
   - `GET /api/cart`
 
-- **Cart Management**:
+
+- **Favorites Management**:
 - `GET /api/favorites`   
 
 ---
