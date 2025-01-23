@@ -76,7 +76,12 @@ lib/
 3. **Connect to Backend API**:
    - Update the API base URL in your service layer to match your Laravel backend:
      ```dart
-     const String baseUrl = 'http://your-backend-api-url/api';
+     ApiService(
+      baseUrl: 'http://10.0.2.2:8000/api',
+      commonHeaders: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json',
+      },;
      ```
 
 4. **Run the App**:
@@ -103,12 +108,23 @@ Ensure your Laravel API provides these endpoints:
 - **User Authentication**:  
   - `POST /api/login`
   - `POST /api/register`
+    
+- **User Information**:
+  - `GET  /api/user`
   
 - **Product Management**:  
   - `GET /api/categories`
+  - `GET /api/categories/2/products`
   - `GET /api/products`
+ 
+ - **Cart Management**:
+  - `POST /api/cart/pay`
   - `POST /api/cart`
-  - `GET /api/favorites`
+  - `GET /api/cart`
+
+
+- **Favorites Management**:
+- `GET /api/favorites`   
 
 ---
 
