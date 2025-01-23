@@ -69,8 +69,8 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
                               addressId:
                                   "${addressController.selectedAddress.value?.id}",
                             );
-                            Get.snackbar("Your order has been made",
-                                "Your order has been made");
+                            /*Get.snackbar("Your order has been made",
+                                "Your order has been made");*/
                             Get.offAllNamed(AppRoutes.navBarScreen);
                           }
                         },

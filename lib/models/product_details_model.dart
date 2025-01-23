@@ -16,10 +16,11 @@ class ProductDetailModel {
   String? imagePath;
   int? categoryId;
   dynamic createdAt;
-  dynamic updatedAt;
+  String? updatedAt;
   String? feature;
   String? expiration;
   String? energy;
+  int? stock;
   String? imageUrl;
   Category? category;
 
@@ -35,6 +36,7 @@ class ProductDetailModel {
     this.feature,
     this.expiration,
     this.energy,
+    this.stock,
     this.imageUrl,
     this.category,
   });
@@ -51,6 +53,7 @@ class ProductDetailModel {
     feature: json["feature"],
     expiration: json["expiration"],
     energy: json["energy"],
+    stock: json["stock"],
     imageUrl: json["image_url"],
     category: json["category"] == null ? null : Category.fromJson(json["category"]),
   );
@@ -67,6 +70,7 @@ class ProductDetailModel {
     "feature": feature,
     "expiration": expiration,
     "energy": energy,
+    "stock": stock,
     "image_url": imageUrl,
     "category": category?.toJson(),
   };

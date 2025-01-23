@@ -193,7 +193,7 @@ class CartScreen extends StatelessWidget {
                                       children: [
                                         Container(),
                                         Text(
-                                          "${product?.totalPrice}₺",
+                                          "${product?.totalPrice}\$",
                                           style: TextStyle(
                                               fontSize: 16,
                                               fontWeight: FontWeight.bold),

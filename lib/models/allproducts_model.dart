@@ -32,10 +32,11 @@ class Datum {
   String? imagePath;
   int? categoryId;
   dynamic createdAt;
-  dynamic updatedAt;
+  String? updatedAt;
   String? feature;
   String? expiration;
   String? energy;
+  int? stock;
   String? imageUrl;
 
   Datum({
@@ -50,6 +51,7 @@ class Datum {
     this.feature,
     this.expiration,
     this.energy,
+    this.stock,
     this.imageUrl,
   });
 
@@ -65,6 +67,7 @@ class Datum {
     feature: json["feature"],
     expiration: json["expiration"],
     energy: json["energy"],
+    stock: json["stock"],
     imageUrl: json["image_url"],
   );
 
@@ -80,6 +83,7 @@ class Datum {
     "feature": feature,
     "expiration": expiration,
     "energy": energy,
+    "stock": stock,
     "image_url": imageUrl,
   };
 }

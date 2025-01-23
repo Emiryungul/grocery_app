@@ -45,6 +45,7 @@ dependencies:
   geocoding: ^3.0.0
   geocode: ^1.0.3
   url_launcher: ^6.3.1
+  percent_indicator: ^4.2.4
 
 dev_dependencies:
   flutter_test:
