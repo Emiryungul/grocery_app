@@ -4,6 +4,7 @@ import 'package:grocery_app/ui/addresses_screen/addresses_screen.dart';
 import 'package:grocery_app/ui/checkout_screen/checkout_screen.dart';
 import 'package:grocery_app/ui/home_screen/home_screen.dart';
 import 'package:grocery_app/ui/navbar_screen/navbar_screen.dart';
+import 'package:grocery_app/ui/order_history_screen/order_history_screen.dart';
 import 'package:grocery_app/ui/product_detail_screen/product_detail_screen.dart';
 import 'package:grocery_app/ui/products_by_category_screen/products_by_category_screen.dart';
 import 'package:grocery_app/ui/register_screen/register_screen.dart';
@@ -63,6 +64,10 @@ class AppPages {
     GetPage(
       name: AppRoutes.checkOutScreen,
       page: () =>  CheckoutScreen(),
+    ),
+    GetPage(
+      name: AppRoutes.orderHistoryScreen,
+      page: () =>  OrderHistoryScreen(),
     ),
     ];
 }
