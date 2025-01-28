@@ -6,10 +6,12 @@ import 'package:grocery_app/controllers/AddressesController.dart';
 import 'package:grocery_app/controllers/AuthController.dart';
 import 'package:grocery_app/controllers/CartController.dart';
 import 'package:grocery_app/controllers/FavoritesController.dart';
+import 'package:grocery_app/controllers/OrderController.dart';
 import 'package:grocery_app/repositories/AddressesRepository.dart';
 import 'package:grocery_app/repositories/AuthRepository.dart';
 import 'package:grocery_app/repositories/CartRepository.dart';
 import 'package:grocery_app/repositories/FavoritesRepository.dart';
+import 'package:grocery_app/repositories/OrderRepository.dart';
 import 'package:grocery_app/repositories/categories&products_repository.dart';
 import 'package:grocery_app/routes/app_pages.dart';
 import 'package:grocery_app/services/api_service.dart';
@@ -49,6 +51,11 @@ void main() async{
   final AddressesRepository addressesRepository=
   AddressesRepository(apiService: apiService);
   Get.put(AddressesController(addressesRepository: addressesRepository));
+
+  final  OrderRepository orderRepository=
+  OrderRepository(apiService: apiService);
+  Get.put(OrderController(orderRepository: orderRepository));
+
 }
 
 class MyApp extends StatelessWidget {

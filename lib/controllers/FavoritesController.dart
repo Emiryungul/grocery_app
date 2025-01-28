@@ -5,7 +5,7 @@ import '../models/user_model.dart';
 import '../repositories/FavoritesRepository.dart';
 import '../utils/http_error_handler.dart';
 import '../utils/token_storage.dart';
-import '../models/favorites_model.dart'as favorites;
+import '../models/favorites_model.dart' as favorites;
 
 class FavoritesController extends GetxController {
   final FavoritesRepository favoritesRepository;
@@ -19,7 +19,6 @@ class FavoritesController extends GetxController {
 
   final Rxn<favorites.FavoritesModel> _favoritesValue =
   Rxn<favorites.FavoritesModel>();
-
 
   favorites.FavoritesModel? get favoritesValue =>
       _favoritesValue.value;
