@@ -139,14 +139,21 @@ class HomeScreen extends StatelessWidget {
                         items: imageList.map((imagePath) {
                           return Builder(
                             builder: (BuildContext context) {
-                              return Container(
-                                width: MediaQuery.of(context).size.width, // Full width of the screen
-                                decoration: const BoxDecoration(
-                                  color: AppColors.whiteAppColor, // Background color for container
-                                ),
-                                child: Image.asset(
-                                  imagePath,
-                                  //fit: BoxFit.cover,
+                              return Padding(
+                                padding: const EdgeInsets.only(right: 15,left: 15),
+                                child: Container(
+                                  width: MediaQuery.of(context).size.width, // Full width of the screen
+                                  decoration:  BoxDecoration(
+                                    color: AppColors.greyShipColor,
+                                    borderRadius: BorderRadius.circular(15)
+                                  ),
+                                  child: Padding(
+                                    padding: const EdgeInsets.all(8.0),
+                                    child: Image.asset(
+                                      imagePath,
+                                      //fit: BoxFit.cover,
+                                    ),
+                                  ),
                                 ),
                               );
                             },
@@ -269,12 +276,10 @@ class HomeScreen extends StatelessWidget {
                               padding: const EdgeInsets.only(
                                   left: 5, right: 5, bottom: 10),
                               child: InkWell(
-                                onTap: (product?.stock ?? 0) > 0
-                                    ? () {
+                                onTap: () {
                                   controller.fetchProductDetail("${product?.id}");
                                   Get.toNamed(AppRoutes.productDetail);
-                                }
-                                    : null, // Non-clickable when stock is 0
+                                }, // Non-clickable when stock is 0
                                 child: Stack(
                                   children: [
                                     Container(

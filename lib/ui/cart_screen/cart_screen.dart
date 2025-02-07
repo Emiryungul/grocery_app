@@ -25,7 +25,7 @@ class CartScreen extends StatelessWidget {
               backgroundColor: AppColors.scaffoldBackgroundColor,
               title: Text(
                 "My Cart",
-                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+               // style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
               ),
             ),
             bottomNavigationBar: InkWell(
